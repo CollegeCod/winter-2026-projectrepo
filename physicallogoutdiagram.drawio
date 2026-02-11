@@ -1,0 +1,120 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 Edg/144.0.0.0" version="29.3.7">
+  <diagram name="Page-1" id="4JG4cOatHPNZkxKLehSf">
+    <mxGraphModel dx="1340" dy="823" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="eAoRLo971--GV_9XK2Ts-1" parent="1" style="whiteSpace=wrap;html=1;aspect=fixed;" value="User" vertex="1">
+          <mxGeometry height="80" width="80" x="385" y="150" as="geometry" />
+        </mxCell>
+        <mxCell id="eAoRLo971--GV_9XK2Ts-2" parent="1" style="whiteSpace=wrap;html=1;aspect=fixed;" value="Update token" vertex="1">
+          <mxGeometry height="80" width="80" x="140" y="360" as="geometry" />
+        </mxCell>
+        <mxCell id="eAoRLo971--GV_9XK2Ts-3" parent="1" style="whiteSpace=wrap;html=1;aspect=fixed;" value="update account status" vertex="1">
+          <mxGeometry height="80" width="80" x="385" y="560" as="geometry" />
+        </mxCell>
+        <mxCell id="eAoRLo971--GV_9XK2Ts-4" parent="1" style="whiteSpace=wrap;html=1;aspect=fixed;" value="Logout Request" vertex="1">
+          <mxGeometry height="80" width="80" x="385" y="360" as="geometry" />
+        </mxCell>
+        <mxCell id="eAoRLo971--GV_9XK2Ts-5" parent="1" style="whiteSpace=wrap;html=1;aspect=fixed;" value="Log out user" vertex="1">
+          <mxGeometry height="80" width="80" x="630" y="360" as="geometry" />
+        </mxCell>
+        <mxCell id="eAoRLo971--GV_9XK2Ts-6" edge="1" parent="1" source="eAoRLo971--GV_9XK2Ts-1" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="eAoRLo971--GV_9XK2Ts-4" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="350" y="310" as="sourcePoint" />
+            <mxPoint x="400" y="260" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="eAoRLo971--GV_9XK2Ts-13" connectable="0" parent="eAoRLo971--GV_9XK2Ts-6" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="User&lt;div&gt;send logout request&lt;/div&gt;" vertex="1">
+          <mxGeometry relative="1" x="-0.1385" y="2" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="eAoRLo971--GV_9XK2Ts-7" edge="1" parent="1" source="eAoRLo971--GV_9XK2Ts-4" style="endArrow=classic;html=1;rounded=0;exitX=0;exitY=0.25;exitDx=0;exitDy=0;entryX=1;entryY=0.25;entryDx=0;entryDy=0;" target="eAoRLo971--GV_9XK2Ts-2" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="290" y="390" as="sourcePoint" />
+            <mxPoint x="340" y="340" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="eAoRLo971--GV_9XK2Ts-14" connectable="0" parent="eAoRLo971--GV_9XK2Ts-7" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Send token update" vertex="1">
+          <mxGeometry relative="1" x="0.103" y="3" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="eAoRLo971--GV_9XK2Ts-8" edge="1" parent="1" source="eAoRLo971--GV_9XK2Ts-2" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.75;exitDx=0;exitDy=0;entryX=0;entryY=0.75;entryDx=0;entryDy=0;" target="eAoRLo971--GV_9XK2Ts-4" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="260" y="520" as="sourcePoint" />
+            <mxPoint x="310" y="470" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="eAoRLo971--GV_9XK2Ts-15" connectable="0" parent="eAoRLo971--GV_9XK2Ts-8" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Send update confirmation" vertex="1">
+          <mxGeometry relative="1" x="-0.3333" as="geometry">
+            <mxPoint x="25" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="eAoRLo971--GV_9XK2Ts-9" edge="1" parent="1" source="eAoRLo971--GV_9XK2Ts-4" style="endArrow=classic;html=1;rounded=0;exitX=0.25;exitY=1;exitDx=0;exitDy=0;entryX=0.25;entryY=0;entryDx=0;entryDy=0;" target="eAoRLo971--GV_9XK2Ts-3" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="310" y="540" as="sourcePoint" />
+            <mxPoint x="360" y="490" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="eAoRLo971--GV_9XK2Ts-16" connectable="0" parent="eAoRLo971--GV_9XK2Ts-9" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Send token&lt;div&gt;update&lt;/div&gt;&lt;div&gt;confirmation&lt;/div&gt;" vertex="1">
+          <mxGeometry relative="1" x="-0.2667" y="-5" as="geometry">
+            <mxPoint y="-14" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="eAoRLo971--GV_9XK2Ts-10" edge="1" parent="1" source="eAoRLo971--GV_9XK2Ts-3" style="endArrow=classic;html=1;rounded=0;exitX=0.75;exitY=0;exitDx=0;exitDy=0;entryX=0.75;entryY=1;entryDx=0;entryDy=0;" target="eAoRLo971--GV_9XK2Ts-4" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="450" y="540" as="sourcePoint" />
+            <mxPoint x="500" y="490" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="eAoRLo971--GV_9XK2Ts-17" connectable="0" parent="eAoRLo971--GV_9XK2Ts-10" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Send&amp;nbsp;&lt;div&gt;updated&lt;/div&gt;&lt;div&gt;account status&lt;/div&gt;" vertex="1">
+          <mxGeometry relative="1" x="-0.4167" y="5" as="geometry">
+            <mxPoint x="10" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="eAoRLo971--GV_9XK2Ts-12" edge="1" parent="1" source="eAoRLo971--GV_9XK2Ts-5" style="endArrow=classic;html=1;rounded=0;exitX=0;exitY=0.75;exitDx=0;exitDy=0;entryX=1;entryY=0.75;entryDx=0;entryDy=0;" target="eAoRLo971--GV_9XK2Ts-4" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="520" y="450" as="sourcePoint" />
+            <mxPoint x="570" y="400" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="eAoRLo971--GV_9XK2Ts-18" connectable="0" parent="eAoRLo971--GV_9XK2Ts-12" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Send updated account status" vertex="1">
+          <mxGeometry relative="1" x="0.3576" y="2" as="geometry">
+            <mxPoint x="32" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="eAoRLo971--GV_9XK2Ts-19" edge="1" parent="1" source="eAoRLo971--GV_9XK2Ts-5" style="endArrow=classic;html=1;rounded=0;exitX=0;exitY=0.25;exitDx=0;exitDy=0;entryX=1;entryY=0.25;entryDx=0;entryDy=0;" target="eAoRLo971--GV_9XK2Ts-4" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="560" y="300" as="sourcePoint" />
+            <mxPoint x="610" y="250" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="eAoRLo971--GV_9XK2Ts-20" connectable="0" parent="eAoRLo971--GV_9XK2Ts-19" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Logout user" vertex="1">
+          <mxGeometry relative="1" x="0.2606" y="-2" as="geometry">
+            <mxPoint x="24" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="eAoRLo971--GV_9XK2Ts-21" edge="1" parent="1" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;rounded=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="330" y="250" as="sourcePoint" />
+            <mxPoint x="330" y="30" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="eAoRLo971--GV_9XK2Ts-22" edge="1" parent="1" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;rounded=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="530" y="250" as="sourcePoint" />
+            <mxPoint x="330" y="250" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="eAoRLo971--GV_9XK2Ts-23" edge="1" parent="1" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;rounded=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="530" y="250" as="sourcePoint" />
+            <mxPoint x="530" y="20" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

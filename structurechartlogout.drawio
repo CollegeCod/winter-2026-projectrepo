@@ -1,0 +1,78 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36" version="29.3.7">
+  <diagram name="Page-1" id="J-b74OvjHRcnb8KPlg5O">
+    <mxGraphModel dx="1545" dy="780" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="YtT2k2J3wtpfAH1iQRuD-1" parent="1" style="whiteSpace=wrap;html=1;aspect=fixed;" value="1.2&lt;div&gt;Logout&lt;/div&gt;" vertex="1">
+          <mxGeometry height="80" width="80" x="360" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="YtT2k2J3wtpfAH1iQRuD-2" parent="1" style="whiteSpace=wrap;html=1;aspect=fixed;" value="&lt;div&gt;1.2.2&lt;/div&gt;&lt;div&gt;Session Termination&lt;/div&gt;" vertex="1">
+          <mxGeometry height="80" width="80" x="520" y="400" as="geometry" />
+        </mxCell>
+        <mxCell id="YtT2k2J3wtpfAH1iQRuD-3" parent="1" style="whiteSpace=wrap;html=1;aspect=fixed;" value="&lt;div&gt;1.2.1&lt;/div&gt;Logout Crud" vertex="1">
+          <mxGeometry height="80" width="80" x="200" y="400" as="geometry" />
+        </mxCell>
+        <mxCell id="7wC-zh_xpTXQ-9-n8CDe-4" edge="1" parent="1" source="7wC-zh_xpTXQ-9-n8CDe-5" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <Array as="points" />
+            <mxPoint x="450" y="300" as="sourcePoint" />
+            <mxPoint x="520" y="390" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="7wC-zh_xpTXQ-9-n8CDe-5" parent="1" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" value="" vertex="1">
+          <mxGeometry height="10" width="10" x="410" y="230" as="geometry" />
+        </mxCell>
+        <mxCell id="7wC-zh_xpTXQ-9-n8CDe-6" edge="1" parent="1" style="curved=1;endArrow=classic;html=1;rounded=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <Array as="points">
+              <mxPoint x="440" y="220" />
+              <mxPoint x="370" y="230" />
+            </Array>
+            <mxPoint x="430" y="210" as="sourcePoint" />
+            <mxPoint x="360" y="180" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="7wC-zh_xpTXQ-9-n8CDe-7" edge="1" parent="1" source="YtT2k2J3wtpfAH1iQRuD-3" style="endArrow=none;html=1;rounded=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" target="YtT2k2J3wtpfAH1iQRuD-1" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="140" y="420" as="sourcePoint" />
+            <mxPoint x="190" y="370" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="7wC-zh_xpTXQ-9-n8CDe-8" edge="1" parent="1" source="YtT2k2J3wtpfAH1iQRuD-2" style="endArrow=none;html=1;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="310" y="420" as="sourcePoint" />
+            <mxPoint x="400" y="180" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="7wC-zh_xpTXQ-9-n8CDe-12" parent="1" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#000000;" value="" vertex="1">
+          <mxGeometry height="10" width="10" x="220" y="380" as="geometry" />
+        </mxCell>
+        <mxCell id="7wC-zh_xpTXQ-9-n8CDe-13" edge="1" parent="1" source="7wC-zh_xpTXQ-9-n8CDe-12" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="270" y="330" as="sourcePoint" />
+            <mxPoint x="360" y="210" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="7wC-zh_xpTXQ-9-n8CDe-15" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;rotation=-50;" value="Logout Request" vertex="1">
+          <mxGeometry height="30" width="60" x="240" y="270" as="geometry" />
+        </mxCell>
+        <mxCell id="7wC-zh_xpTXQ-9-n8CDe-17" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;rotation=60;" value="Current Session" vertex="1">
+          <mxGeometry height="30" width="60" x="410" y="320" as="geometry" />
+        </mxCell>
+        <mxCell id="7wC-zh_xpTXQ-9-n8CDe-18" edge="1" parent="1" source="7wC-zh_xpTXQ-9-n8CDe-19" style="endArrow=classic;html=1;rounded=0;exitX=0;exitY=0;exitDx=0;exitDy=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="530" y="330" as="sourcePoint" />
+            <mxPoint x="440" y="200" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="7wC-zh_xpTXQ-9-n8CDe-19" parent="1" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" value="" vertex="1">
+          <mxGeometry height="10" width="10" x="550" y="360" as="geometry" />
+        </mxCell>
+        <mxCell id="7wC-zh_xpTXQ-9-n8CDe-21" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;rotation=52;" value="Terminte&amp;nbsp;&lt;div&gt;Session&lt;/div&gt;" vertex="1">
+          <mxGeometry height="30" width="60" x="490" y="260" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
