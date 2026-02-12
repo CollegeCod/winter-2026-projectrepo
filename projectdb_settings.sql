@@ -16,33 +16,29 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `user`
+-- Table structure for table `settings`
 --
 
-DROP TABLE IF EXISTS `user`;
+DROP TABLE IF EXISTS `settings`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `user` (
-  `USER_ID` int unsigned NOT NULL AUTO_INCREMENT,
-  `PERM_ID` tinyint unsigned NOT NULL,
-  `USER_NAME` varchar(50) NOT NULL,
-  `USER_FNAME` varchar(50) NOT NULL,
-  `USER_LNAME` varchar(50) NOT NULL,
-  `USER_EMAIL` varchar(50) NOT NULL,
-  PRIMARY KEY (`USER_ID`),
-  UNIQUE KEY `USER_NAME_UNIQUE` (`USER_NAME`),
-  KEY `fk_user_permissions_idx` (`PERM_ID`),
-  CONSTRAINT `fk_user_permissions` FOREIGN KEY (`PERM_ID`) REFERENCES `permissions` (`PERM_ID`) ON DELETE RESTRICT ON UPDATE CASCADE
+CREATE TABLE `settings` (
+  `SETTING_ID` int NOT NULL AUTO_INCREMENT,
+  `USER_ID` int unsigned NOT NULL,
+  PRIMARY KEY (`SETTING_ID`),
+  UNIQUE KEY `SETTING_ID_UNIQUE` (`SETTING_ID`),
+  UNIQUE KEY `USER_ID_UNIQUE` (`USER_ID`),
+  CONSTRAINT `fk_user_id` FOREIGN KEY (`USER_ID`) REFERENCES `user` (`USER_ID`) ON DELETE RESTRICT ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `user`
+-- Dumping data for table `settings`
 --
 
-LOCK TABLES `user` WRITE;
-/*!40000 ALTER TABLE `user` DISABLE KEYS */;
-/*!40000 ALTER TABLE `user` ENABLE KEYS */;
+LOCK TABLES `settings` WRITE;
+/*!40000 ALTER TABLE `settings` DISABLE KEYS */;
+/*!40000 ALTER TABLE `settings` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
