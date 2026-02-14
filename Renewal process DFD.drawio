@@ -1,0 +1,83 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36" version="29.3.8">
+  <diagram name="Page-1" id="rTFP7fmArLNKkwRtDK3R">
+    <mxGraphModel dx="1545" dy="746" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="n35rNuKowFBMRy-ku2lS-1" parent="1" style="whiteSpace=wrap;html=1;aspect=fixed;" value="User" vertex="1">
+          <mxGeometry height="80" width="80" x="385" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="n35rNuKowFBMRy-ku2lS-2" parent="1" style="whiteSpace=wrap;html=1;aspect=fixed;" value="&lt;div&gt;1.14.1&lt;/div&gt;renewal CRUD" vertex="1">
+          <mxGeometry height="80" width="80" x="385" y="350" as="geometry" />
+        </mxCell>
+        <mxCell id="n35rNuKowFBMRy-ku2lS-4" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="D1&lt;div&gt;Customers&lt;/div&gt;" vertex="1">
+          <mxGeometry height="60" width="120" x="90" y="360" as="geometry" />
+        </mxCell>
+        <mxCell id="n35rNuKowFBMRy-ku2lS-6" parent="1" style="whiteSpace=wrap;html=1;aspect=fixed;" value="send&lt;div&gt;reminder&lt;/div&gt;" vertex="1">
+          <mxGeometry height="80" width="80" x="385" y="550" as="geometry" />
+        </mxCell>
+        <mxCell id="n35rNuKowFBMRy-ku2lS-7" edge="1" parent="1" source="n35rNuKowFBMRy-ku2lS-1" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="n35rNuKowFBMRy-ku2lS-2" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="300" y="150" as="sourcePoint" />
+            <mxPoint x="280" y="210" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="n35rNuKowFBMRy-ku2lS-8" connectable="0" parent="n35rNuKowFBMRy-ku2lS-7" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Send renewal&lt;div&gt;reminder&lt;/div&gt;" vertex="1">
+          <mxGeometry relative="1" x="-0.1412" y="-5" as="geometry">
+            <mxPoint x="5" y="-43" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="n35rNuKowFBMRy-ku2lS-9" edge="1" parent="1" source="n35rNuKowFBMRy-ku2lS-2" style="endArrow=classic;html=1;rounded=0;exitX=0;exitY=0.25;exitDx=0;exitDy=0;entryX=1;entryY=0.25;entryDx=0;entryDy=0;" target="n35rNuKowFBMRy-ku2lS-4" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="110" y="310" as="sourcePoint" />
+            <mxPoint x="160" y="260" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="n35rNuKowFBMRy-ku2lS-11" connectable="0" parent="n35rNuKowFBMRy-ku2lS-9" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Renewal reminder" vertex="1">
+          <mxGeometry relative="1" x="0.0506" y="-3" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="n35rNuKowFBMRy-ku2lS-10" edge="1" parent="1" source="n35rNuKowFBMRy-ku2lS-4" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.75;exitDx=0;exitDy=0;entryX=0;entryY=0.75;entryDx=0;entryDy=0;" target="n35rNuKowFBMRy-ku2lS-2" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="350" y="530" as="sourcePoint" />
+            <mxPoint x="400" y="480" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="n35rNuKowFBMRy-ku2lS-13" connectable="0" parent="n35rNuKowFBMRy-ku2lS-10" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Expiring membership&amp;nbsp;&lt;div&gt;customers&lt;/div&gt;" vertex="1">
+          <mxGeometry relative="1" x="-0.3377" y="2" as="geometry">
+            <mxPoint x="22" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="n35rNuKowFBMRy-ku2lS-12" edge="1" parent="1" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;rounded=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="730" y="240" as="sourcePoint" />
+            <mxPoint x="110" y="240" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="n35rNuKowFBMRy-ku2lS-14" edge="1" parent="1" source="n35rNuKowFBMRy-ku2lS-2" style="endArrow=classic;html=1;rounded=0;exitX=0.25;exitY=1;exitDx=0;exitDy=0;entryX=0.25;entryY=0;entryDx=0;entryDy=0;" target="n35rNuKowFBMRy-ku2lS-6" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="240" y="520" as="sourcePoint" />
+            <mxPoint x="290" y="470" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="n35rNuKowFBMRy-ku2lS-18" connectable="0" parent="n35rNuKowFBMRy-ku2lS-14" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Expiring&lt;div&gt;membership&lt;/div&gt;&lt;div&gt;customers&lt;/div&gt;" vertex="1">
+          <mxGeometry relative="1" x="-0.25" y="-3" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="n35rNuKowFBMRy-ku2lS-15" edge="1" parent="1" source="n35rNuKowFBMRy-ku2lS-6" style="endArrow=classic;html=1;rounded=0;exitX=0.75;exitY=0;exitDx=0;exitDy=0;entryX=0.75;entryY=1;entryDx=0;entryDy=0;" target="n35rNuKowFBMRy-ku2lS-2" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="180" y="540" as="sourcePoint" />
+            <mxPoint x="230" y="490" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="n35rNuKowFBMRy-ku2lS-19" connectable="0" parent="n35rNuKowFBMRy-ku2lS-15" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Did send/&lt;div&gt;didn&#39;t send&lt;/div&gt;" vertex="1">
+          <mxGeometry relative="1" x="-0.2333" as="geometry">
+            <mxPoint y="16" as="offset" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

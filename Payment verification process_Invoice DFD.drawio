@@ -1,0 +1,100 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36" version="29.3.8">
+  <diagram name="Page-1" id="EfrufYSovF5DFj9z5cG5">
+    <mxGraphModel dx="1545" dy="746" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="01Wg3tPWqm_YcqTYf8Hb-1" parent="1" style="whiteSpace=wrap;html=1;aspect=fixed;" value="User" vertex="1">
+          <mxGeometry height="80" width="80" x="380" y="130" as="geometry" />
+        </mxCell>
+        <mxCell id="01Wg3tPWqm_YcqTYf8Hb-2" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="&lt;div&gt;D1&lt;/div&gt;Invoice ID" vertex="1">
+          <mxGeometry height="60" width="120" x="120" y="350" as="geometry" />
+        </mxCell>
+        <mxCell id="01Wg3tPWqm_YcqTYf8Hb-3" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="&lt;div&gt;D2&lt;/div&gt;Invoice status" vertex="1">
+          <mxGeometry height="60" width="120" x="600" y="350" as="geometry" />
+        </mxCell>
+        <mxCell id="01Wg3tPWqm_YcqTYf8Hb-4" parent="1" style="whiteSpace=wrap;html=1;aspect=fixed;" value="Send email" vertex="1">
+          <mxGeometry height="80" width="80" x="380" y="510" as="geometry" />
+        </mxCell>
+        <mxCell id="01Wg3tPWqm_YcqTYf8Hb-5" parent="1" style="whiteSpace=wrap;html=1;aspect=fixed;" value="&lt;div&gt;1.11.1&lt;/div&gt;Payment Processor" vertex="1">
+          <mxGeometry height="80" width="80" x="380" y="340" as="geometry" />
+        </mxCell>
+        <mxCell id="01Wg3tPWqm_YcqTYf8Hb-6" edge="1" parent="1" source="01Wg3tPWqm_YcqTYf8Hb-1" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="01Wg3tPWqm_YcqTYf8Hb-5" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="340" y="230" as="sourcePoint" />
+            <mxPoint x="390" y="180" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="01Wg3tPWqm_YcqTYf8Hb-7" connectable="0" parent="01Wg3tPWqm_YcqTYf8Hb-6" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Select&lt;br&gt;&lt;div&gt;&lt;span style=&quot;background-color: light-dark(#ffffff, var(--ge-dark-color, #121212)); color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;payment&lt;/span&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry relative="1" x="-0.2154" y="-1" as="geometry">
+            <mxPoint x="1" y="-31" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="01Wg3tPWqm_YcqTYf8Hb-8" edge="1" parent="1" source="01Wg3tPWqm_YcqTYf8Hb-5" style="endArrow=classic;html=1;rounded=0;exitX=0;exitY=0.338;exitDx=0;exitDy=0;entryX=1;entryY=0.25;entryDx=0;entryDy=0;exitPerimeter=0;" target="01Wg3tPWqm_YcqTYf8Hb-2" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="200" y="290" as="sourcePoint" />
+            <mxPoint x="250" y="240" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="01Wg3tPWqm_YcqTYf8Hb-14" connectable="0" parent="01Wg3tPWqm_YcqTYf8Hb-8" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Payment Information" vertex="1">
+          <mxGeometry relative="1" x="0.1006" y="-3" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="01Wg3tPWqm_YcqTYf8Hb-9" edge="1" parent="1" source="01Wg3tPWqm_YcqTYf8Hb-2" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.75;exitDx=0;exitDy=0;entryX=0;entryY=0.75;entryDx=0;entryDy=0;" target="01Wg3tPWqm_YcqTYf8Hb-5" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="110" y="520" as="sourcePoint" />
+            <mxPoint x="160" y="470" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="01Wg3tPWqm_YcqTYf8Hb-15" connectable="0" parent="01Wg3tPWqm_YcqTYf8Hb-9" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="invoice ID" vertex="1">
+          <mxGeometry relative="1" x="-0.3707" y="-1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="01Wg3tPWqm_YcqTYf8Hb-10" edge="1" parent="1" source="01Wg3tPWqm_YcqTYf8Hb-5" style="endArrow=classic;html=1;rounded=0;exitX=0.25;exitY=1;exitDx=0;exitDy=0;entryX=0.25;entryY=0;entryDx=0;entryDy=0;" target="01Wg3tPWqm_YcqTYf8Hb-4" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="180" y="510" as="sourcePoint" />
+            <mxPoint x="230" y="460" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="01Wg3tPWqm_YcqTYf8Hb-16" connectable="0" parent="01Wg3tPWqm_YcqTYf8Hb-10" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Invoice ID&lt;div&gt;Payment Info&lt;/div&gt;" vertex="1">
+          <mxGeometry relative="1" x="-0.4444" y="-6" as="geometry">
+            <mxPoint x="6" y="5" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="01Wg3tPWqm_YcqTYf8Hb-11" edge="1" parent="1" source="01Wg3tPWqm_YcqTYf8Hb-4" style="endArrow=classic;html=1;rounded=0;exitX=0.75;exitY=0;exitDx=0;exitDy=0;entryX=0.75;entryY=1;entryDx=0;entryDy=0;" target="01Wg3tPWqm_YcqTYf8Hb-5" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="190" y="560" as="sourcePoint" />
+            <mxPoint x="240" y="510" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="01Wg3tPWqm_YcqTYf8Hb-17" connectable="0" parent="01Wg3tPWqm_YcqTYf8Hb-11" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="email sent&lt;div&gt;/didn&#39;t send&lt;/div&gt;" vertex="1">
+          <mxGeometry relative="1" x="-0.4444" y="3" as="geometry">
+            <mxPoint x="3" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="01Wg3tPWqm_YcqTYf8Hb-12" edge="1" parent="1" source="01Wg3tPWqm_YcqTYf8Hb-5" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="01Wg3tPWqm_YcqTYf8Hb-3" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="570" y="490" as="sourcePoint" />
+            <mxPoint x="620" y="440" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="01Wg3tPWqm_YcqTYf8Hb-13" connectable="0" parent="01Wg3tPWqm_YcqTYf8Hb-12" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Send invoice status&lt;div&gt;to system&lt;/div&gt;" vertex="1">
+          <mxGeometry relative="1" x="-0.2714" y="4" as="geometry">
+            <mxPoint x="19" y="4" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="01Wg3tPWqm_YcqTYf8Hb-18" edge="1" parent="1" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;rounded=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="75" y="270" as="sourcePoint" />
+            <mxPoint x="765" y="270" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="01Wg3tPWqm_YcqTYf8Hb-19" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="Human&lt;div&gt;machine boundary&lt;/div&gt;" vertex="1">
+          <mxGeometry height="30" width="60" x="60" y="230" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
