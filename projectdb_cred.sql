@@ -24,20 +24,11 @@ DROP TABLE IF EXISTS `cred`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `cred` (
   `USER_ID` int unsigned NOT NULL,
-  `PASSWORD` char(60) NOT NULL,
+  `PASSWORD` varchar(255) NOT NULL,
   PRIMARY KEY (`USER_ID`),
   CONSTRAINT `fk_cred_user` FOREIGN KEY (`USER_ID`) REFERENCES `user` (`USER_ID`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `cred`
---
-
-LOCK TABLES `cred` WRITE;
-/*!40000 ALTER TABLE `cred` DISABLE KEYS */;
-/*!40000 ALTER TABLE `cred` ENABLE KEYS */;
-UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -48,4 +39,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2026-01-25 14:18:05
+-- Dump completed on 2026-03-05 11:15:35
