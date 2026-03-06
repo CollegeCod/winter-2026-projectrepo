@@ -1,0 +1,127 @@
+/* Style Sheet for the login/authorization pages */
+/* Logging in, entering email to receive verification code, and resetting the password */
+
+/* -------- COLORS -------- */
+
+:root {
+    --background: #e8f4f8;
+    --primary: #0077be;
+    --text-muted: #6b7280;
+    --card: #ffffff;
+    --border: #e5e7eb;
+}
+
+/* -------- PAGE -------- */
+
+body {
+    margin: 0;
+    font-family: system-ui, Arial, sans-serif;
+    background: var(--background);
+}
+
+/* -------- LOGIN CARD -------- */
+
+.login_container {
+    width: 420px;
+    margin: 80px auto;
+
+    background: var(--card);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+
+    padding: 40px;
+}
+
+/* -------- LOGO -------- */
+
+.auth_logo_img {
+    display: block;
+    margin: 0 auto 20px auto;
+    width: 140px;
+}
+
+/* -------- TITLES -------- */
+
+.login_container h2 {
+    text-align: center;
+    color: var(--primary);
+    font-size: 32px;
+    margin-bottom: 5px;
+}
+
+.auth_subtitle {
+    text-align: center;
+    color: var(--text-muted);
+    margin-bottom: 30px;
+    font-size: 18px;
+}
+
+/* -------- LABELS -------- */
+
+.login_container label {
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 5px;
+
+    color: var(--primary);
+    font-weight: 600;
+    font-size: 16px;
+}
+
+/* -------- INPUTS -------- */
+
+.login_container input {
+    width: 100%;
+    padding: 14px;
+
+    border-radius: 10px;
+    border: 2px solid var(--border);
+
+    font-size: 16px;
+}
+
+.login_container input:focus {
+    outline: none;
+    border-color: var(--primary);
+}
+
+/* -------- BUTTON -------- */
+
+.login_container button {
+    width: 100%;
+    margin-top: 25px;
+
+    padding: 14px;
+
+    background: var(--primary);
+    color: white;
+
+    border: none;
+    border-radius: 12px;
+
+    font-size: 18px;
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+.login_container button:hover {
+    opacity: 0.9;
+}
+
+/* -------- LINK -------- */
+
+.login_container p {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.login_container a {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.login_container a:hover {
+    text-decoration: underline;
+}
