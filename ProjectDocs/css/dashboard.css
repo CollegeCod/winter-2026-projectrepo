@@ -1,0 +1,375 @@
+/* ============================================================
+   dashboard.css — Belle's Training Solutions
+   Targets Dashboard.PHP only
+   Windswept Student Consulting 2026
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&display=swap');
+
+/* ---- CSS Variables (Milestone #7 Colour Palette) ---- */
+:root {
+    --bg-main:        #E8F4F8;
+    --bg-card:        #FFFFFF;
+    --bg-sidebar:     #FFFFFF;
+
+    --primary:        #0077BE;
+    --primary-light:  #E8F4F8;
+    --primary-hover:  #005f99;
+
+    --text-primary:   #0077BE;
+    --text-body:      #1e3a5f;
+    --text-muted:     #6b7280;
+    --text-white:     #FFFFFF;
+
+    --success:        #10B981;
+    --warning:        #F97316;
+    --danger:         #EF4444;
+
+    --border:         #E5E7EB;
+    --shadow-sm:      0 1px 3px rgba(0, 119, 190, 0.08);
+    --shadow-md:      0 4px 16px rgba(0, 119, 190, 0.12);
+
+    --radius-sm:      6px;
+    --radius-md:      10px;
+    --radius-lg:      14px;
+
+    --sidebar-w:      220px;
+    --font:           'DM Sans', sans-serif;
+}
+
+/* ============================================================
+   RESET & BASE
+   ============================================================ */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body { height: 100%; }
+
+body {
+    font-family: var(--font);
+    background-color: var(--bg-main);
+    color: var(--text-body);
+    display: grid;
+    grid-template-columns: var(--sidebar-w) 1fr;
+    grid-template-rows: 1fr auto;
+    grid-template-areas:
+        "sidebar main"
+        "sidebar footer";
+    min-height: 100vh;
+}
+
+a { text-decoration: none; color: inherit; }
+
+/* ============================================================
+   SIDEBAR
+   ============================================================ */
+.sidebar {
+    grid-area: sidebar;
+    background: var(--bg-sidebar);
+    border-right: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+    box-shadow: 2px 0 8px rgba(0, 119, 190, 0.06);
+}
+
+.sidebar-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 20px 16px 18px;
+    border-bottom: 1px solid var(--border);
+    min-height: 80px;
+}
+
+.logo-img {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+    border-radius: 50%;
+}
+
+.logo-wsc {
+    width: 40px;
+    height: auto;
+    object-fit: contain;
+}
+
+.logo-fallback {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-circle {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: var(--primary-light);
+    border: 2px solid var(--primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.logo-circle span {
+    font-size: 7px;
+    font-weight: 600;
+    color: var(--primary);
+    text-align: center;
+    line-height: 1.3;
+}
+
+.wsc-text {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--primary);
+    letter-spacing: -0.02em;
+}
+
+.sidebar-nav {
+    flex: 1;
+    padding: 12px 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 12px;
+    border-radius: var(--radius-md);
+    color: var(--text-muted);
+    font-size: 14px;
+    font-weight: 500;
+    transition: background 0.15s, color 0.15s;
+    cursor: pointer;
+}
+
+.nav-item:hover {
+    background: var(--primary-light);
+    color: var(--primary);
+}
+
+.nav-item.active {
+    background: var(--primary-light);
+    color: var(--primary);
+    font-weight: 600;
+}
+
+.nav-icon {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    stroke-width: 1.75;
+}
+
+.sidebar-footer {
+    padding: 10px 10px 18px;
+    border-top: 1px solid var(--border);
+}
+
+.nav-item.logout { color: var(--danger); }
+.nav-item.logout:hover { background: #fef2f2; color: var(--danger); }
+
+/* ============================================================
+   MAIN CONTENT
+   ============================================================ */
+.main-content {
+    grid-area: main;
+    padding: 36px 40px 40px;
+    overflow-y: auto;
+}
+
+.page-header {
+    margin-bottom: 28px;
+}
+
+.page-header h1 {
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--primary);
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+}
+
+.page-subtitle {
+    font-size: 13.5px;
+    color: var(--text-muted);
+    margin-top: 4px;
+}
+
+/* ============================================================
+   NAV CARDS GRID
+   ============================================================ */
+.nav-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+    max-width: 800px;
+}
+
+/* Single nav card */
+.nav-card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 18px 20px;
+    text-decoration: none;
+    color: inherit;
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow 0.18s, transform 0.18s, border-color 0.18s;
+}
+
+.nav-card:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+    border-color: #bfdbfe;
+}
+
+/* Coloured icon badge */
+.nav-card-icon {
+    width: 46px;
+    height: 46px;
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.nav-card-icon svg {
+    width: 22px;
+    height: 22px;
+    stroke-width: 1.75;
+}
+
+/* Icon colour variants */
+.icon-blue   { background: #dbeafe; }
+.icon-green  { background: #d1fae5; }
+.icon-purple { background: #ede9fe; }
+.icon-orange { background: #ffedd5; }
+.icon-teal   { background: #ccfbf1; }
+.icon-indigo { background: #e0e7ff; }
+.icon-gray   { background: #f3f4f6; }
+
+.icon-blue svg   { stroke: #2563eb; }
+.icon-green svg  { stroke: #059669; }
+.icon-purple svg { stroke: #7c3aed; }
+.icon-orange svg { stroke: #ea580c; }
+.icon-teal svg   { stroke: #0d9488; }
+.icon-indigo svg { stroke: #4338ca; }
+.icon-gray svg   { stroke: #6b7280; }
+
+/* Text block */
+.nav-card-text {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    flex: 1;
+    min-width: 0;
+}
+
+.nav-card-title {
+    font-size: 14.5px;
+    font-weight: 700;
+    color: var(--primary);
+    line-height: 1.2;
+}
+
+.nav-card-desc {
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1.4;
+}
+
+/* Chevron arrow */
+.nav-card-arrow {
+    width: 18px;
+    height: 18px;
+    stroke: var(--text-muted);
+    stroke-width: 2;
+    flex-shrink: 0;
+    transition: stroke 0.15s, transform 0.15s;
+}
+
+.nav-card:hover .nav-card-arrow {
+    stroke: var(--primary);
+    transform: translateX(3px);
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.site-footer {
+    grid-area: footer;
+    background: var(--bg-sidebar);
+    border-top: 1px solid var(--border);
+    padding: 12px 40px;
+    text-align: right;
+    font-size: 11px;
+    color: var(--text-muted);
+}
+
+#aboutfooter {
+	color:#0077BE !important;
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 900px) {
+    .nav-cards-grid {
+        grid-template-columns: 1fr;
+        max-width: 480px;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "main"
+            "footer";
+    }
+    .sidebar { display: none; }
+    .main-content { padding: 20px 16px; }
+}
+
+/* ── Logout nav card variant ── */
+.icon-red { background: #fee2e2; }
+.icon-red svg { stroke: var(--danger); }
+
+.nav-card-logout {
+    border-color: #fca5a5;
+}
+
+.nav-card-logout:hover {
+    background: #fff5f5;
+    border-color: var(--danger);
+    box-shadow: 0 4px 16px rgba(239, 68, 68, 0.10);
+}
+
+.nav-card-title-logout {
+    color: var(--danger) !important;
+}
+
+.nav-card-logout .nav-card-arrow {
+    stroke: #fca5a5;
+}
+
+.nav-card-logout:hover .nav-card-arrow {
+    stroke: var(--danger);
+}

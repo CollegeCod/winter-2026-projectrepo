@@ -1,0 +1,97 @@
+:root {
+    --side-bg: #ffffff;
+    --side-active-bg: #eaf4ff;
+    --side-active-text: #007cc3;
+    --side-inactive: #6b7c93;
+    --side-border: #e1e8ed;
+    --logo-bg-box: #a3c4d1; 
+}
+
+.sidebar-layout {
+    display: flex;
+    min-height: 100vh;
+}
+
+.sidebar {
+    width: 260px;
+    background: var(--side-bg);
+    border-right: 1px solid var(--side-border);
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    height: 100vh;
+    z-index: 1000;
+}
+
+/* Header Logos */
+.sidebar-brand {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid var(--side-border);
+}
+
+.logo-main-container {
+    background-color: var(--logo-bg-box);
+    padding: 12px;
+    width: 110px;
+    display: flex;
+    justify-content: center;
+}
+
+.img-main { width: 85px; height: auto; }
+
+.logo-wsc-container { padding-left: 15px; }
+.img-wsc { width: 65px; height: auto; }
+
+/* Navigation Links */
+.sidebar-nav { flex-grow: 1; padding: 15px 0; }
+
+.sidebar-nav ul { list-style: none; padding: 0; margin: 0; }
+
+.sidebar-nav li a {
+    display: flex;
+    align-items: center;
+    padding: 12px 25px;
+    color: var(--side-inactive);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 15px;
+    transition: all 0.2s ease;
+}
+
+.sidebar-nav li.active a {
+    background-color: var(--side-active-bg);
+    color: var(--side-active-text);
+    border-radius: 0 50px 50px 0; /* Pill shape */
+    margin-right: 10px;
+}
+
+.sidebar-nav li i {
+    width: 25px;
+    margin-right: 15px;
+    font-size: 18px;
+    text-align: center;
+}
+
+/* Footer & Logout */
+.sidebar-footer {
+    padding: 20px 25px;
+    border-top: 1px solid var(--side-border);
+}
+
+.logout-link {
+    color: #d32f2f;
+    text-decoration: none;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+}
+
+.logout-link i { margin-right: 10px; }
+
+/* Main Wrapper adjustment */
+.main-wrapper {
+    margin-left: 260px;
+    width: calc(100% - 260px);
+    background-color: #f4f9fc;
+}
