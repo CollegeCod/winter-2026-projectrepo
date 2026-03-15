@@ -1,0 +1,360 @@
+/* ============================================================
+   settings.css
+   Settings-page-only styles
+   Designed to work with shared dashboard.css
+   ============================================================ */
+
+.page-message {
+    margin-bottom: 18px;
+    padding: 14px 16px;
+    border-radius: var(--radius-md);
+    font-size: 14px;
+    font-weight: 600;
+    border: 1px solid transparent;
+}
+
+.message-success {
+    background: #ecfdf5;
+    color: #166534;
+    border-color: #bbf7d0;
+}
+
+.message-error {
+    background: #fef2f2;
+    color: #991b1b;
+    border-color: #fecaca;
+}
+
+/* New two-column settings layout */
+.settings-layout {
+    display: grid;
+    grid-template-columns: minmax(320px, 1fr) minmax(320px, 1fr);
+    gap: 18px;
+    align-items: start;
+}
+
+.settings-column {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.settings-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+}
+
+.settings-card-full {
+    grid-column: 1 / -1;
+}
+
+.settings-card-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 18px 18px 12px;
+}
+
+.settings-card-header h2 {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+.settings-card-body {
+    padding: 0 18px 18px;
+}
+
+.settings-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.settings-icon i,
+.settings-icon svg {
+    width: 20px;
+    height: 20px;
+    stroke-width: 1.8;
+}
+
+.icon-blue {
+    background: #dbeafe;
+}
+
+.icon-blue i,
+.icon-blue svg {
+    color: #2563eb;
+    stroke: #2563eb;
+}
+
+.icon-indigo {
+    background: #e0e7ff;
+}
+
+.icon-indigo i,
+.icon-indigo svg {
+    color: #4338ca;
+    stroke: #4338ca;
+}
+
+.icon-teal {
+    background: #ccfbf1;
+}
+
+.icon-teal i,
+.icon-teal svg {
+    color: #0d9488;
+    stroke: #0d9488;
+}
+
+.settings-form {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.form-group label {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--primary);
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    height: 42px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 0 14px;
+    font-size: 14px;
+    color: var(--text-body);
+    background: #fff;
+    outline: none;
+    transition:
+        border-color 0.15s ease,
+        box-shadow 0.15s ease,
+        background 0.15s ease;
+    box-sizing: border-box;
+}
+
+.form-group input::placeholder {
+    color: #9ca3af;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    border-color: #93c5fd;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.12);
+}
+
+.settings-btn-primary {
+    width: 100%;
+    height: 44px;
+    border: none;
+    border-radius: var(--radius-md);
+    background: var(--primary);
+    color: #fff;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition:
+        background 0.15s ease,
+        transform 0.15s ease;
+}
+
+.settings-btn-primary:hover {
+    background: var(--primary-hover);
+}
+
+.settings-btn-primary:active {
+    transform: translateY(1px);
+}
+
+.stub-box {
+    min-height: 140px;
+    border: 1px dashed var(--border);
+    border-radius: var(--radius-md);
+    background: #f8fbfd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+}
+
+.stub-box p {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.rules-header {
+    justify-content: space-between;
+}
+
+.rules-title-wrap {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.rule-create-form {
+    padding-bottom: 18px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 18px;
+}
+
+.rule-form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(220px, 1fr));
+    gap: 14px;
+}
+
+.rule-create-actions {
+    margin-top: 6px;
+}
+
+.rules-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.rule-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 18px;
+    padding: 16px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    background: #fff;
+}
+
+.rule-main {
+    min-width: 0;
+}
+
+.rule-main h3 {
+    margin: 0 0 6px;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+.rule-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    font-size: 12px;
+    color: var(--text-muted);
+}
+
+.rule-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+
+.rule-status {
+    display: inline-flex;
+    align-items: center;
+    padding: 5px 10px;
+    border-radius: 999px;
+    background: #ecfdf5;
+    color: #16a34a;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.rule-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 64px;
+    height: 34px;
+    padding: 0 14px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    background: #fff;
+    color: var(--primary);
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    transition:
+        background 0.15s ease,
+        border-color 0.15s ease;
+}
+
+.rule-btn:hover {
+    background: var(--primary-light);
+    border-color: #bfdbfe;
+}
+
+.danger-btn {
+    color: var(--danger);
+}
+
+.danger-btn:hover {
+    background: #fff5f5;
+    border-color: #fecaca;
+}
+
+.empty-state {
+    padding: 18px;
+    border: 1px dashed var(--border);
+    border-radius: var(--radius-md);
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 14px;
+}
+
+@media (max-width: 980px) {
+    .settings-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .settings-card-full {
+        grid-column: auto;
+    }
+
+    .rule-form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .rule-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .rule-actions {
+        width: 100%;
+        justify-content: flex-start;
+    }
+}
+
+.delete-rule-form {
+    margin: 0;
+}
+
+.delete-rule-form .rule-btn {
+    cursor: pointer;
+}
