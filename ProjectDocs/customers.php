@@ -104,8 +104,9 @@ $customers = $data_stmt->fetchAll(PDO::FETCH_ASSOC);
     <title>Customer Management</title>
 
     <!-- Update these paths to match your project -->
-    <link rel="stylesheet" href="css/dashboard.css">
     <link rel="stylesheet" href="css/customers.css">
+	<link rel="stylesheet" href="css/dashboard.css">
+	
 
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
 </head>
@@ -129,10 +130,6 @@ $customers = $data_stmt->fetchAll(PDO::FETCH_ASSOC);
         <a href="customers.php" class="nav-item active">
             <i data-lucide="users" class="nav-icon"></i>
             <span>Customers</span>
-        </a>
-        <a href="qr_code.php" class="nav-item">
-            <i data-lucide="qr-code" class="nav-icon"></i>
-            <span>QR Codes</span>
         </a>
         <a href="invoices.php" class="nav-item">
             <i data-lucide="credit-card" class="nav-icon"></i>
@@ -170,7 +167,11 @@ $customers = $data_stmt->fetchAll(PDO::FETCH_ASSOC);
 
     </div>
 
-    <div class="search-card">
+    <div class="search-bar-row">
+        <a href="new_customer.php" class="btn-add-customer">
+            <i data-lucide="plus"></i> Add Customer
+        </a>
+
         <form method="GET" action="customers.php" id="search_form">
             <div class="search-wrap">
                 <i data-lucide="search" class="search-icon"></i>
@@ -179,7 +180,7 @@ $customers = $data_stmt->fetchAll(PDO::FETCH_ASSOC);
                     name="search"
                     id="search_input"
                     class="search-input"
-                    placeholder="Search by name, member ID, email..."
+                    placeholder="Search customers..."
                     value="<?php echo htmlspecialchars($search); ?>"
                     autocomplete="off"
                 >
@@ -210,11 +211,11 @@ $customers = $data_stmt->fetchAll(PDO::FETCH_ASSOC);
     </p>
 
     <div class="table-card">
+        <div class="table-scroll">
         <?php if (count($customers) > 0): ?>
             <table class="customer-table">
                 <thead>
                     <tr>
-                        <th>Member ID</th>
                         <th>Name</th>
                         <th>Email</th>
                         <th>Phone Number</th>
@@ -227,13 +228,7 @@ $customers = $data_stmt->fetchAll(PDO::FETCH_ASSOC);
                 </thead>
                 <tbody>
                     <?php foreach ($customers as $customer): ?>
-                        <tr>
-                            <td class="col-id">
-                                <?php echo htmlspecialchars(
-                                    $customer["MEMB_ID"],
-                                ); ?>
-                            </td>
-
+                        <tr data-edit-url="edit_customer.php?MEMB_ID=<?php echo urlencode($customer['MEMB_ID']); ?>" class="clickable-row">
                             <td class="col-name">
                                 <?php echo htmlspecialchars(
                                     $customer["MEMB_FNAME"] .
@@ -243,20 +238,13 @@ $customers = $data_stmt->fetchAll(PDO::FETCH_ASSOC);
                             </td>
 
                             <td class="col-contact">
-                                <span class="contact-row">
-                                    <i data-lucide="mail" class="contact-icon"></i>
-                                    <?php echo htmlspecialchars(
-                                        $customer["MEMB_EMAIL"],
-                                    ); ?>
-                                </span>
+                                <a href="https://mail.google.com/mail/?view=cm&to=<?php echo urlencode($customer['MEMB_EMAIL']); ?>" target="_blank">
+                                    <?php echo htmlspecialchars($customer["MEMB_EMAIL"]); ?>
+                                </a>
                             </td>
+
                             <td class="col-contact">
-                                <span class="contact-row">
-                                    <i data-lucide="phone" class="contact-icon"></i>
-                                    <?php echo htmlspecialchars(
-                                        $customer["MEMB_PHONE"],
-                                    ); ?>
-                                </span>
+                                <?php echo htmlspecialchars($customer["MEMB_PHONE"]); ?>
                             </td>
 
                             <td>
@@ -359,6 +347,7 @@ $customers = $data_stmt->fetchAll(PDO::FETCH_ASSOC);
                 <?php endif; ?>
             </div>
         <?php endif; ?>
+        </div><!-- /.table-scroll -->
     </div>
 
 </main>
@@ -371,22 +360,22 @@ $customers = $data_stmt->fetchAll(PDO::FETCH_ASSOC);
 <script>
 lucide.createIcons();
 
-function toggleMenu(btn) {
-    const dropdown = btn.nextElementSibling;
+// ── Live search on every key press ────────────────────────────────────────
+var search_input = document.getElementById('search_input');
+var search_timer = null;
 
-    document.querySelectorAll('.actions-dropdown.open').forEach(d => {
-        if (d !== dropdown) d.classList.remove('open');
+search_input.addEventListener('input', function () {
+    clearTimeout(search_timer);
+    search_timer = setTimeout(function () {
+        document.getElementById('search_form').submit();
+    }, 3000);
+});
+
+// ── Double-click row to edit customer ────────────────────────────────────
+document.querySelectorAll('tr.clickable-row').forEach(function (row) {
+    row.addEventListener('dblclick', function () {
+        window.location.href = this.dataset.editUrl;
     });
-
-    dropdown.classList.toggle('open');
-}
-
-document.addEventListener('click', function(e) {
-    if (!e.target.closest('.actions-menu')) {
-        document.querySelectorAll('.actions-dropdown.open').forEach(d => {
-            d.classList.remove('open');
-        });
-    }
 });
 </script>
 
