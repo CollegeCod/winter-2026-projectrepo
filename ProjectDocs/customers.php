@@ -286,11 +286,23 @@ $customers = $data_stmt->fetchAll(PDO::FETCH_ASSOC);
                             </td>
 
                             <td class="col-actions">
-                                <a class="btn-edit" href="edit_customer.php?MEMB_ID=<?php echo urlencode(
-                                    $customer["MEMB_ID"],
-                                ); ?>">
-                                    <i data-lucide="pencil"></i> Edit
-                                </a>
+                                <div class="actions-menu">
+                                    <button class="actions-toggle" onclick="toggleMenu(this)" title="Actions">
+                                        <i data-lucide="more-vertical"></i>
+                                    </button>
+                                    <div class="actions-dropdown">
+                                        <a class="action-item" href="edit_customer.php?MEMB_ID=<?php echo urlencode($customer['MEMB_ID']); ?>">
+                                            <i data-lucide="pencil"></i> Edit
+                                        </a>
+                                        <button class="action-item action-delete" onclick="confirmDelete(<?php echo (int)$customer['MEMB_ID']; ?>, '<?php echo htmlspecialchars($customer['MEMB_FNAME'] . ' ' . $customer['MEMB_LNAME'], ENT_QUOTES); ?>')">
+                                            <i data-lucide="trash-2"></i> Delete
+                                        </button>
+                                        <!-- Add back once UniFi Access API is connected -->
+                                        <button class="action-item action-disabled" disabled title="Available once UniFi Access is connected">
+                                            <i data-lucide="qr-code"></i> Resend QR
+                                        </button>
+                                    </div>
+                                </div>
                             </td>
                         </tr>
                     <?php endforeach; ?>
@@ -377,6 +389,52 @@ document.querySelectorAll('tr.clickable-row').forEach(function (row) {
         window.location.href = this.dataset.editUrl;
     });
 });
+
+// ── Actions hamburger menu ────────────────────────────────────────────────
+function toggleMenu(btn) {
+    var dropdown = btn.nextElementSibling;
+    document.querySelectorAll('.actions-dropdown.open').forEach(function (d) {
+        if (d !== dropdown) d.classList.remove('open');
+    });
+    dropdown.classList.toggle('open');
+}
+
+document.addEventListener('click', function (e) {
+    if (!e.target.closest('.actions-menu')) {
+        document.querySelectorAll('.actions-dropdown.open').forEach(function (d) {
+            d.classList.remove('open');
+        });
+    }
+});
+
+// ── Delete customer ───────────────────────────────────────────────────────
+function confirmDelete(membId, fullName) {
+    if (!confirm('Are you sure you want to delete ' + fullName + '? This cannot be undone.')) return;
+
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', 'delete_customer.php', true);
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xhr.onload = function () {
+        if (xhr.status === 200) {
+            try {
+                var response = JSON.parse(xhr.responseText);
+                if (response.success) {
+                    window.location.reload();
+                } else {
+                    alert('Failed to delete customer: ' + (response.message || 'Unknown error.'));
+                }
+            } catch (e) {
+                alert('Unexpected server response.');
+            }
+        } else {
+            alert('Server error (' + xhr.status + '). Please try again.');
+        }
+    };
+    xhr.onerror = function () {
+        alert('Network error. Please try again.');
+    };
+    xhr.send('MEMB_ID=' + encodeURIComponent(membId));
+}
 </script>
 
 </body>
