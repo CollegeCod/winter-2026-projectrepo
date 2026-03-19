@@ -4,45 +4,36 @@
    Windswept Student Consulting 2026
    ============================================================ */
 
-@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&display=swap');
 
 /* ── Variables (matches dashboard.css palette) ───────────────────────── */
 :root {
-    --bg-main: #e8f4f8;
-    --bg-card: #ffffff;
-    --bg-sidebar: #ffffff;
-    --primary: #0077be;
-    --primary-light: #e8f4f8;
-    --primary-hover: #005f99;
-    --text-body: #1e3a5f;
-    --text-muted: #6b7280;
-    --text-white: #ffffff;
-    --success: #10b981;
-    --danger: #ef4444;
-    --border: #e5e7eb;
-    --shadow-sm: 0 1px 3px rgba(0, 119, 190, 0.08);
-    --shadow-md: 0 4px 16px rgba(0, 119, 190, 0.12);
-    --radius-sm: 6px;
-    --radius-md: 10px;
-    --radius-lg: 14px;
-    --font: "DM Sans", sans-serif;
-    --sidebar-w: 220px;
+    --bg-main:      #E8F4F8;
+    --bg-card:      #FFFFFF;
+    --bg-sidebar:   #FFFFFF;
+    --primary:      #0077BE;
+    --primary-light:#E8F4F8;
+    --primary-hover:#005f99;
+    --text-body:    #1e3a5f;
+    --text-muted:   #6b7280;
+    --text-white:   #FFFFFF;
+    --success:      #10B981;
+    --danger:       #EF4444;
+    --border:       #E5E7EB;
+    --shadow-sm:    0 1px 3px rgba(0,119,190,0.08);
+    --shadow-md:    0 4px 16px rgba(0,119,190,0.12);
+    --radius-sm:    6px;
+    --radius-md:    10px;
+    --radius-lg:    14px;
+    --font:         'DM Sans', sans-serif;
+    --sidebar-w:    220px;
 }
 
 /* ============================================================
    RESET & BASE
    ============================================================ */
-*,
-*::before,
-*::after {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-html,
-body {
-    height: 100%;
-}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; }
 
 body {
     font-family: var(--font);
@@ -50,7 +41,14 @@ body {
     color: var(--text-body);
     font-size: 14px;
     line-height: 1.5;
-    padding: 36px 40px 40px;
+    padding: 0;
+}
+
+.main-content {
+    padding: 28px 24px 40px 12px;
+    min-height: 100vh;
+    box-sizing: border-box;
+    min-width: 0;
 }
 
 a {
@@ -58,9 +56,7 @@ a {
     text-decoration: none;
 }
 
-a:hover {
-    text-decoration: underline;
-}
+a:hover { text-decoration: underline; }
 
 /* ============================================================
    PAGE HEADING  —  <h1>
@@ -81,64 +77,78 @@ h1 + p {
 }
 
 /* ============================================================
-   SEARCH FORM  —  #search_form
+   SEARCH BAR ROW  —  .search-bar-row
    ============================================================ */
-#search_form {
+.search-bar-row {
     display: flex;
     align-items: center;
     gap: 10px;
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-lg);
-    padding: 12px 18px;
     margin-bottom: 12px;
-    box-shadow: var(--shadow-sm);
-    flex-wrap: wrap;
 }
 
-#search_input {
-    flex: 1;
-    min-width: 500px;
-    border: none;
-    outline: none;
-    font-size: 14px;
-    font-family: var(--font);
-    color: var(--text-body);
-    background: transparent;
-}
-
-#search_input::placeholder {
-    color: var(--text-muted);
-}
-
-#search_form button[type="submit"] {
+/* Add Customer button */
+.btn-add-customer {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
     background: var(--primary);
     color: var(--text-white);
     font-family: var(--font);
     font-size: 13.5px;
     font-weight: 600;
-    padding: 8px 16px;
-    border: none;
+    padding: 9px 16px;
     border-radius: var(--radius-md);
+    border: none;
     cursor: pointer;
+    text-decoration: none;
+    white-space: nowrap;
     transition: background 0.15s;
 }
 
-#search_form button[type="submit"]:hover {
+.btn-add-customer:hover {
     background: var(--primary-hover);
-}
-
-/* Clear link inside the search form */
-#search_form a {
-    font-size: 13px;
-    color: var(--text-muted);
-    font-weight: 200;
-}
-
-#search_form a:hover {
-    color: var(--danger);
     text-decoration: none;
+    color: var(--text-white);
 }
+
+#search_form {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 8px 14px;
+    box-shadow: var(--shadow-sm);
+}
+
+.search-wrap {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex: 1;
+    min-width: 0;
+}
+
+.search-icon {
+    width: 16px;
+    height: 16px;
+    color: var(--text-muted);
+    flex-shrink: 0;
+}
+
+#search_input {
+    flex: 1;
+    min-width: 0;
+    border: none;
+    outline: none;
+    font-size: 13.5px;
+    font-family: var(--font);
+    color: var(--text-body);
+    background: transparent;
+}
+
+#search_input::placeholder { color: var(--text-muted); }
 
 /* ============================================================
    RESULTS SUMMARY  —  <p> after the form
@@ -153,6 +163,11 @@ h1 + p {
 /* ============================================================
    CUSTOMER TABLE  —  <table>
    ============================================================ */
+.table-scroll {
+    overflow-x: auto;
+    width: 100%;
+}
+
 table {
     width: 100%;
     border-collapse: collapse;
@@ -183,12 +198,9 @@ tbody tr {
     transition: background 0.12s;
 }
 
-tbody tr:last-child {
-    border-bottom: none;
-}
-tbody tr:hover {
-    background: #f4f9fc;
-}
+tbody tr.clickable-row { cursor: pointer; }
+tbody tr:last-child { border-bottom: none; }
+tbody tr:hover { background: #f4f9fc; }
 
 td {
     padding: 13px 16px;
@@ -197,14 +209,18 @@ td {
     font-size: 13.5px;
 }
 
-/* First column (Member ID) — bold blue */
+/* First column (Name) */
 td:first-child {
     font-weight: 600;
-    color: var(--primary);
+    color: var(--text-body);
     white-space: nowrap;
 }
 
 /* Actions column link */
+td.col-contact {
+    white-space: nowrap;
+}
+
 td:last-child a {
     display: inline-flex;
     align-items: center;
@@ -216,9 +232,7 @@ td:last-child a {
     padding: 5px 12px;
     border-radius: var(--radius-sm);
     border: 1px solid var(--border);
-    transition:
-        background 0.12s,
-        border-color 0.12s;
+    transition: background 0.12s, border-color 0.12s;
 }
 
 td:last-child a:hover {
@@ -255,10 +269,7 @@ td:last-child a:hover {
     background: var(--bg-card);
     color: var(--text-body);
     text-decoration: none;
-    transition:
-        background 0.12s,
-        border-color 0.12s,
-        color 0.12s;
+    transition: background 0.12s, border-color 0.12s, color 0.12s;
 }
 
 #pagination a:hover {
@@ -307,15 +318,41 @@ body > a[href*="dashboard"] {
     border-radius: var(--radius-md);
     border: 1px solid var(--border);
     box-shadow: var(--shadow-sm);
-    transition:
-        background 0.15s,
-        border-color 0.15s;
+    transition: background 0.15s, border-color 0.15s;
 }
 
 body > a[href*="dashboard"]:hover {
     background: var(--primary-light);
     border-color: var(--primary);
     text-decoration: none;
+}
+
+/* ============================================================
+   EDIT CUSTOMER — side-by-side sections
+   ============================================================ */
+.form-sections-row {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 0;
+    align-items: start;
+}
+
+.form-sections-divider {
+    width: 1px;
+    background: var(--border);
+    margin: 0 28px;
+    align-self: stretch;
+}
+
+@media (max-width: 900px) {
+    .form-sections-row {
+        grid-template-columns: 1fr;
+    }
+    .form-sections-divider {
+        width: 100%;
+        height: 1px;
+        margin: 20px 0;
+    }
 }
 
 /* ============================================================
@@ -379,6 +416,42 @@ form[method="POST"] label {
     margin-bottom: 5px;
 }
 
+/* Select dropdown */
+form[method="POST"] select {
+    width: 100%;
+    font-family: var(--font);
+    font-size: 14px;
+    color: var(--text-body);
+    background: var(--bg-main);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 9px 13px;
+    outline: none;
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%236b7280' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 13px center;
+    padding-right: 36px;
+    transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+form[method="POST"] select:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(0,119,190,0.10);
+    background-color: var(--bg-card);
+}
+
+form[method="POST"] select optgroup {
+    font-weight: 700;
+    color: var(--primary);
+}
+
+form[method="POST"] select option {
+    font-weight: 400;
+    color: var(--text-body);
+}
+
 /* Text, email, date inputs */
 form[method="POST"] input[type="text"],
 form[method="POST"] input[type="email"],
@@ -392,16 +465,14 @@ form[method="POST"] input[type="date"] {
     border-radius: var(--radius-md);
     padding: 9px 13px;
     outline: none;
-    transition:
-        border-color 0.15s,
-        box-shadow 0.15s;
+    transition: border-color 0.15s, box-shadow 0.15s;
 }
 
 form[method="POST"] input[type="text"]:focus,
 form[method="POST"] input[type="email"]:focus,
 form[method="POST"] input[type="date"]:focus {
     border-color: var(--primary);
-    box-shadow: 0 0 0 3px rgba(0, 119, 190, 0.1);
+    box-shadow: 0 0 0 3px rgba(0,119,190,0.10);
     background: var(--bg-card);
 }
 
@@ -418,20 +489,37 @@ form[method="POST"] textarea {
     padding: 9px 13px;
     outline: none;
     resize: vertical;
-    transition:
-        border-color 0.15s,
-        box-shadow 0.15s;
+    transition: border-color 0.15s, box-shadow 0.15s;
 }
 
 form[method="POST"] textarea:focus {
     border-color: var(--primary);
-    box-shadow: 0 0 0 3px rgba(0, 119, 190, 0.1);
+    box-shadow: 0 0 0 3px rgba(0,119,190,0.10);
     background: var(--bg-card);
 }
 
 /* Hidden CSRF input — keep invisible */
 form[method="POST"] input[type="hidden"] {
     display: none;
+}
+
+/* Field hints */
+.field-hint {
+    font-size: 11.5px;
+    color: var(--text-muted);
+    margin-top: 2px;
+}
+
+/* Validation states */
+form[method="POST"] input.input-invalid {
+    border-color: var(--danger);
+    box-shadow: 0 0 0 3px rgba(239,68,68,0.10);
+    background: #fff5f5;
+}
+
+form[method="POST"] input.input-valid {
+    border-color: var(--success);
+    box-shadow: 0 0 0 3px rgba(16,185,129,0.10);
 }
 
 /* Save Changes button */
@@ -450,9 +538,7 @@ form[method="POST"] button[type="submit"] {
     border: none;
     border-radius: var(--radius-md);
     cursor: pointer;
-    transition:
-        background 0.15s,
-        transform 0.15s;
+    transition: background 0.15s, transform 0.15s;
 }
 
 form[method="POST"] button[type="submit"]:hover {
@@ -476,9 +562,7 @@ form[method="POST"] a[href*="customers"] {
     padding: 10px 18px;
     border-radius: var(--radius-md);
     border: 1px solid var(--border);
-    transition:
-        background 0.15s,
-        border-color 0.15s;
+    transition: background 0.15s, border-color 0.15s;
 }
 
 form[method="POST"] a[href*="customers"]:hover {
@@ -507,13 +591,8 @@ form[method="POST"] a[href*="customers"]:hover {
     form[method="POST"] {
         grid-template-columns: 1fr;
     }
-    form[method="POST"] textarea {
-        grid-column: 1;
-    }
-    form[method="POST"] button[type="submit"] {
-        grid-column: 1;
-        justify-self: stretch;
-    }
+    form[method="POST"] textarea { grid-column: 1; }
+    form[method="POST"] button[type="submit"] { grid-column: 1; justify-self: stretch; }
     form[method="POST"] a[href*="customers"] {
         grid-column: 1;
         justify-self: stretch;
@@ -525,11 +604,104 @@ form[method="POST"] a[href*="customers"]:hover {
 }
 
 @media (max-width: 600px) {
-    body {
-        padding: 16px;
-    }
-    th,
-    td {
-        padding: 10px 10px;
-    }
+    body { padding: 16px; }
+    th, td { padding: 10px 10px; }
+}
+/* ============================================================
+   ACTIONS HAMBURGER MENU
+   ============================================================ */
+.col-actions {
+    width: 48px;
+    text-align: center;
+}
+
+.actions-menu {
+    position: relative;
+    display: inline-block;
+}
+
+.actions-toggle {
+    background: none;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 5px 7px;
+    cursor: pointer;
+    color: var(--text-muted);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.12s, border-color 0.12s, color 0.12s;
+}
+
+.actions-toggle:hover {
+    background: var(--primary-light);
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+.actions-dropdown {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: calc(100% + 4px);
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
+    min-width: 150px;
+    z-index: 100;
+    overflow: hidden;
+}
+
+.actions-dropdown.open {
+    display: block;
+}
+
+.action-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    padding: 9px 14px;
+    font-family: var(--font);
+    font-size: 13.5px;
+    font-weight: 500;
+    color: var(--text-body);
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.12s;
+}
+
+.action-item:hover {
+    background: var(--primary-light);
+    color: var(--primary);
+    text-decoration: none;
+}
+
+.action-item i {
+    width: 15px;
+    height: 15px;
+    flex-shrink: 0;
+}
+
+.action-delete {
+    color: var(--danger);
+}
+
+.action-delete:hover {
+    background: #fee2e2;
+    color: var(--danger);
+}
+
+.action-disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+    color: var(--text-muted);
+}
+
+.action-disabled:hover {
+    background: none;
+    color: var(--text-muted);
 }
