@@ -204,12 +204,14 @@ $current_package = (string)($customer['PACKAGE_ID'] ?? '');
                                 placeholder="Last name" required>
                         </div>
 
-                        <div class="form-group">
-                            <label for="MEMB_DOB">Date of Birth</label>
-                            <input type="date" id="MEMB_DOB" name="MEMB_DOB"
-                                value="<?php echo field_value($customer, 'MEMB_DOB'); ?>"
-                                required>
-                        </div>
+						<div class="form-group">
+							<label for="MEMB_DOB">Date of Birth</label>
+							<input type="date" id="MEMB_DOB" name="MEMB_DOB"
+								value="<?php echo htmlspecialchars($_POST['MEMB_DOB'] ?? ''); ?>"
+									min="1900-01-01"
+									max="<?php echo date('Y-m-d'); ?>"
+									required>
+						</div>
 
                         <div class="form-group">
                             <label for="MEMB_EMAIL">Email</label>
@@ -365,6 +367,18 @@ phone_input.addEventListener('keydown', function (e) {
     if ((e.key === 'Backspace' || e.key === 'Delete') && this.value === '+1 ') {
         e.preventDefault();
         this.value = '';
+    }
+});
+
+// ── DOB auto-formatter ────────────────────────────────────────────
+document.getElementById('MEMB_DOB').addEventListener('blur', function () {
+    var val = this.value;
+    if (val) {
+        var year = val.split('-')[0];
+        if (year.length !== 4 || parseInt(year) < 1900 || parseInt(year) > <?php echo date('Y'); ?>) {
+            this.value = '';
+            alert('Please enter a valid date of birth.');
+        }
     }
 });
 
