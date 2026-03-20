@@ -46,9 +46,8 @@ if ($user_record) {
     $reset_code_hash = password_hash($reset_code, PASSWORD_DEFAULT);
 
     // Expiry 15 minutes
-    //
-    // todo
-    // doesnt work, sets a 6 hour expiry for some reason
+    //Time zone ensures that the server clock is the same as the system clock when sending out qr codes
+    date_default_timezone_set("America/Edmonton");
     $expires_at_mysql = date("Y-m-d H:i:s", time() + 900);
 
     set_reset_code_for_user(
