@@ -16,20 +16,19 @@
 <body>
 
 <!-- ===== SIDEBAR NAV BAR ===== -->
-<aside class="sidebar">
-
-    <div class="sidebar-logo">
-        <div class="logo-images">
-            <img src="bellestraining.jpeg" alt="Belle's Training Solutions" class="logo-img">
-            <img src="WSC.jpg" alt="WSC" class="logo-wsc">
-        </div>
-        <div class="logo-fallback">
-            <div class="logo-circle">
-                <span>Belle's<br>Training<br>Solutions</span>
+    <aside class="sidebar">
+        <div class="sidebar-logo">
+            <div class="logo-images">
+                <img src="images/Belle_Logo.png" alt="Belle's Training Solutions" class="logo-img">
+                <img src="images/WSC_Logo.png" alt="WSC" class="logo-wsc">
             </div>
-            <span class="wsc-text">WSC</span>
+            <div class="logo-fallback">
+                <div class="logo-circle">
+                    <span>Belle's<br>Training<br>Solutions</span>
+                </div>
+                <span class="wsc-text">WSC</span>
+            </div>
         </div>
-    </div>
 
     <nav class="sidebar-nav">
         <a href="Dashboard.php" class="nav-item active">
