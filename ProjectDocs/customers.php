@@ -5,7 +5,6 @@
 // ── Database connection ────────────────────────────────────────────────────
 require_once __DIR__ . "/includes/session_manager.php";
 require_once __DIR__ . "/db_connection.php";
-include __DIR__ . "/logout_modal.php";
 
 start_secure_session();
 $pdo = create_database_connection();
@@ -131,17 +130,17 @@ $customers = $data_stmt->fetchAll(PDO::FETCH_ASSOC);
             <i data-lucide="users" class="nav-icon"></i>
             <span>Customers</span>
         </a>
-        <a href="invoices.php" class="nav-item">
+        <a href="invoice.php" class="nav-item">
             <i data-lucide="credit-card" class="nav-icon"></i>
-            <span>Payments</span>
+            <span>Payments & invoices</span>
         </a>
-        <a href="renewals.php" class="nav-item">
+ <!--       <a href="renewals.php" class="nav-item">
             <i data-lucide="refresh-cw" class="nav-icon"></i>
             <span>Renewals</span>
-        </a>
-        <a href="invoice.php" class="nav-item">
-            <i data-lucide="file-text" class="nav-icon"></i>
-            <span>Invoice</span>
+        </a> -->
+        <a href="Reports.php" class="nav-item">
+            <i data-lucide="bar-chart-2" class="nav-icon"></i>
+            <span>Reports</span>
         </a>
         <a href="sys_settings.php" class="nav-item">
             <i data-lucide="settings" class="nav-icon"></i>
@@ -150,10 +149,10 @@ $customers = $data_stmt->fetchAll(PDO::FETCH_ASSOC);
     </nav>
 
     <div class="sidebar-footer">
-        <a href="dashboard.php" class="nav-item">
-            <i data-lucide="arrow-left" class="nav-icon"></i>
-            <span>Back</span>
-        </a>
+        <button data-logout class="nav-item logout">
+            <i data-lucide="log-out" class="nav-icon"></i>
+            <span>Logout</span>
+        </button>
     </div>
 </aside>
 
@@ -368,6 +367,8 @@ $customers = $data_stmt->fetchAll(PDO::FETCH_ASSOC);
     <p><small>&copy; Windswept Student Consulting 2026</small></p>
 </footer>
 
+
+<?php include 'logout_modal.php'; ?>
 
 <script>
 lucide.createIcons();

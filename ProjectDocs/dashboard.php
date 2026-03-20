@@ -44,6 +44,10 @@
             <i data-lucide="credit-card" class="nav-icon"></i>
             <span>Payments & Invoices</span>
         </a>
+		<a href="Reports.php" class="nav-item">
+			<i data-lucide="bar-chart-2" class="nav-icon"></i>
+			<span>Reports</span>
+		</a>
         <a href="settings.php" class="nav-item">
             <i data-lucide="settings" class="nav-icon"></i>
             <span>Settings</span>
