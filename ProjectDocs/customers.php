@@ -142,7 +142,7 @@ $customers = $data_stmt->fetchAll(PDO::FETCH_ASSOC);
             <i data-lucide="bar-chart-2" class="nav-icon"></i>
             <span>Reports</span>
         </a>
-        <a href="sys_settings.php" class="nav-item">
+        <a href="settings.php" class="nav-item">
             <i data-lucide="settings" class="nav-icon"></i>
             <span>Settings</span>
         </a>
