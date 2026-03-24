@@ -111,19 +111,17 @@ $customers = $data_stmt->fetchAll(PDO::FETCH_ASSOC);
 </head>
 <body>
 
-    <aside class="sidebar">
-        <div class="sidebar-logo">
-            <div class="logo-images">
-                <img src="images/Belle_Logo.png" alt="Belle's Training Solutions" class="logo-img">
-                <img src="images/WSC_Logo.png" alt="WSC" class="logo-wsc">
-            </div>
-            <div class="logo-fallback">
-                <div class="logo-circle">
-                    <span>Belle's<br>Training<br>Solutions</span>
-                </div>
-                <span class="wsc-text">WSC</span>
-            </div>
+<aside class="sidebar">
+    <div class="sidebar-logo">
+        <div class="logo-images">
+            <img src="images/Belle_Logo.png" alt="Belle's Training Solutions" class="logo-img">
+            <img src="images/WSC_Logo.png" alt="WSC" class="logo-wsc">
         </div>
+        <div class="logo-fallback">
+            <div class="logo-circle"><span>Belle's<br>Training<br>Solutions</span></div>
+            <span class="wsc-text">WSC</span>
+        </div>
+    </div>
 
     <nav class="sidebar-nav">
         <a href="dashboard.php" class="nav-item">
@@ -134,19 +132,19 @@ $customers = $data_stmt->fetchAll(PDO::FETCH_ASSOC);
             <i data-lucide="users" class="nav-icon"></i>
             <span>Customers</span>
         </a>
-        <a href="invoice_hub.php" class="nav-item">
+        <a href="invoices.php" class="nav-item">
             <i data-lucide="credit-card" class="nav-icon"></i>
-            <span>Payments, Invoices & Renewals</span>
+            <span>Payments</span>
         </a>
- <!--       <a href="renewals.php" class="nav-item">
+        <a href="renewal.php" class="nav-item">
             <i data-lucide="refresh-cw" class="nav-icon"></i>
             <span>Renewals</span>
-        </a> -->
-        <a href="Reports.php" class="nav-item">
-            <i data-lucide="bar-chart-2" class="nav-icon"></i>
-            <span>Reports</span>
         </a>
-        <a href="settings.php" class="nav-item">
+        <a href="invoice.php" class="nav-item">
+            <i data-lucide="file-text" class="nav-icon"></i>
+            <span>Invoice</span>
+        </a>
+        <a href="sys_settings.php" class="nav-item">
             <i data-lucide="settings" class="nav-icon"></i>
             <span>Settings</span>
         </a>
@@ -396,19 +394,56 @@ document.querySelectorAll('tr.clickable-row').forEach(function (row) {
 });
 
 // ── Actions hamburger menu ────────────────────────────────────────────────
+// Portal the dropdown to <body> so overflow clipping on table/scroll containers
+// can never cut it off
+
+var _active_dropdown = null;
+
 function toggleMenu(btn) {
-    var dropdown = btn.nextElementSibling;
-    document.querySelectorAll('.actions-dropdown.open').forEach(function (d) {
-        if (d !== dropdown) d.classList.remove('open');
-    });
-    dropdown.classList.toggle('open');
+    // If clicking the same button, close and bail
+    if (_active_dropdown && _active_dropdown._btn === btn) {
+        closeActiveDropdown();
+        return;
+    }
+
+    closeActiveDropdown();
+
+    var template = btn.nextElementSibling; // the .actions-dropdown in the row
+    var clone     = template.cloneNode(true);
+    clone.classList.add('open');
+    clone.style.position = 'fixed';
+    clone.style.zIndex   = '9999';
+    clone.style.display  = 'block';
+
+    // Position relative to button
+    var rect = btn.getBoundingClientRect();
+    document.body.appendChild(clone);
+
+    var ch = clone.offsetHeight;
+    var cw = clone.offsetWidth;
+
+    // Flip up if not enough room below
+    if (rect.bottom + ch > window.innerHeight) {
+        clone.style.top  = (rect.top - ch) + 'px';
+    } else {
+        clone.style.top  = (rect.bottom + 4) + 'px';
+    }
+    clone.style.left = (rect.right - cw) + 'px';
+
+    _active_dropdown = clone;
+    _active_dropdown._btn = btn;
+}
+
+function closeActiveDropdown() {
+    if (_active_dropdown) {
+        _active_dropdown.remove();
+        _active_dropdown = null;
+    }
 }
 
 document.addEventListener('click', function (e) {
-    if (!e.target.closest('.actions-menu')) {
-        document.querySelectorAll('.actions-dropdown.open').forEach(function (d) {
-            d.classList.remove('open');
-        });
+    if (!e.target.closest('.actions-toggle') && !e.target.closest('.actions-dropdown')) {
+        closeActiveDropdown();
     }
 });
 
