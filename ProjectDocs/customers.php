@@ -134,9 +134,9 @@ $customers = $data_stmt->fetchAll(PDO::FETCH_ASSOC);
             <i data-lucide="users" class="nav-icon"></i>
             <span>Customers</span>
         </a>
-        <a href="invoice.php" class="nav-item">
+        <a href="invoice_hub.php" class="nav-item">
             <i data-lucide="credit-card" class="nav-icon"></i>
-            <span>Payments & invoices</span>
+            <span>Payments, Invoices & Renewals</span>
         </a>
  <!--       <a href="renewals.php" class="nav-item">
             <i data-lucide="refresh-cw" class="nav-icon"></i>

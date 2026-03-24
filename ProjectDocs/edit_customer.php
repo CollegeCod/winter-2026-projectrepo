@@ -123,14 +123,11 @@ $current_package = (string)($customer['PACKAGE_ID'] ?? '');
         <a href="qr_codes.php" class="nav-item">
             <i data-lucide="qr-code" class="nav-icon"></i><span>QR Codes</span>
         </a>
-        <a href="Invoices.php" class="nav-item">
-            <i data-lucide="credit-card" class="nav-icon"></i><span>Payments</span>
+        <a href="invoices_hub.php" class="nav-item">
+            <i data-lucide="credit-card" class="nav-icon"></i><span>Payments, Invoices & Renewals</span>
         </a>
-        <a href="renewals.php" class="nav-item">
-            <i data-lucide="refresh-cw" class="nav-icon"></i><span>Renewals</span>
-        </a>
-        <a href="invoice.php" class="nav-item">
-            <i data-lucide="file-text" class="nav-icon"></i><span>Invoice</span>
+        <a href="reports.php" class="nav-item">
+            <i data-lucide="bar-chart-2" class="nav-icon"></i><span>Reports</span>
         </a>
         <a href="settings.php" class="nav-item">
             <i data-lucide="settings" class="nav-icon"></i><span>Settings</span>

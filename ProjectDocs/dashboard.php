@@ -39,9 +39,9 @@
             <i data-lucide="users" class="nav-icon"></i>
             <span>Customers</span>
         </a>
-        <a href="Invoice.php" class="nav-item">
+        <a href="invoice_hub.php" class="nav-item">
             <i data-lucide="credit-card" class="nav-icon"></i>
-            <span>Payments & Invoices</span>
+            <span>Payments, Invoices & Renewals</span>
         </a>
 		<a href="Reports.php" class="nav-item">
 			<i data-lucide="bar-chart-2" class="nav-icon"></i>
@@ -84,12 +84,12 @@
             <i data-lucide="chevron-right" class="nav-card-arrow"></i>
         </a>
 
-        <a href="Invoices.php" class="nav-card">
+        <a href="invoice_hub.php" class="nav-card">
             <div class="nav-card-icon icon-orange">
                 <i data-lucide="credit-card"></i>
             </div>
             <div class="nav-card-text">
-                <span class="nav-card-title">Payments &amp; Invoices</span>
+                <span class="nav-card-title">Payments, Invoices &amp Renewals</span>
                 <span class="nav-card-desc">Track payments and manage billing invoices</span>
             </div>
             <i data-lucide="chevron-right" class="nav-card-arrow"></i>
