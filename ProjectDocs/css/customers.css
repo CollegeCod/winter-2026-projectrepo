@@ -173,7 +173,7 @@ table {
     border-collapse: collapse;
     background: var(--bg-card);
     border-radius: var(--radius-lg);
-    overflow: hidden;
+    overflow: visible;
     box-shadow: var(--shadow-sm);
     border: 1px solid var(--border);
     margin-bottom: 16px;
@@ -221,25 +221,7 @@ td.col-contact {
     white-space: nowrap;
 }
 
-td:last-child a {
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--primary);
-    background: var(--primary-light);
-    padding: 5px 12px;
-    border-radius: var(--radius-sm);
-    border: 1px solid var(--border);
-    transition: background 0.12s, border-color 0.12s;
-}
-
-td:last-child a:hover {
-    background: #dbeafe;
-    border-color: var(--primary);
-    text-decoration: none;
-}
+/* old btn-edit styles removed — replaced by .actions-menu hamburger */
 
 /* ============================================================
    PAGINATION  —  #pagination
@@ -653,11 +635,16 @@ form[method="POST"] a[href*="customers"]:hover {
     overflow: hidden;
 }
 
+.actions-dropdown.open-up {
+    top: auto;
+    bottom: calc(100% + 4px);
+}
+
 .actions-dropdown.open {
     display: block;
 }
 
-.action-item {
+.actions-dropdown .action-item {
     display: flex;
     align-items: center;
     gap: 8px;
@@ -669,39 +656,42 @@ form[method="POST"] a[href*="customers"]:hover {
     color: var(--text-body);
     background: none;
     border: none;
+    border-radius: 0;
+    box-shadow: none;
     cursor: pointer;
     text-decoration: none;
     transition: background 0.12s;
 }
 
-.action-item:hover {
+.actions-dropdown .action-item:hover {
     background: var(--primary-light);
     color: var(--primary);
     text-decoration: none;
+    border-color: transparent;
 }
 
-.action-item i {
+.actions-dropdown .action-item i {
     width: 15px;
     height: 15px;
     flex-shrink: 0;
 }
 
-.action-delete {
+.actions-dropdown .action-delete {
     color: var(--danger);
 }
 
-.action-delete:hover {
+.actions-dropdown .action-delete:hover {
     background: #fee2e2;
     color: var(--danger);
 }
 
-.action-disabled {
+.actions-dropdown .action-disabled {
     opacity: 0.45;
     cursor: not-allowed;
     color: var(--text-muted);
 }
 
-.action-disabled:hover {
+.actions-dropdown .action-disabled:hover {
     background: none;
     color: var(--text-muted);
 }
