@@ -88,21 +88,22 @@ a { text-decoration: none; color: inherit; }
     min-height: 80px;
 }
 
-.logo-img {
-    width: 50px;
-    height: 50px;
-    object-fit: contain;
-    border-radius: 50%;
+.logo-images {
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
+.logo-img,
 .logo-wsc {
-    width: 40px;
-    height: auto;
+    width: 48px;
+    height: 48px;
     object-fit: contain;
+    border-radius: var(--radius-sm);
 }
 
 .logo-fallback {
-    display: flex;
+    display: none;
     align-items: center;
     gap: 10px;
 }
