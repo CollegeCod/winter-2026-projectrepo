@@ -1,4 +1,5 @@
 <?php
+date_default_timezone_set("America/Edmonton");
 /**
  * start_secure_session
  * Starts a PHP session
@@ -21,3 +22,4 @@ function destroy_user_session()
         session_destroy();
     }
 }
+?>
