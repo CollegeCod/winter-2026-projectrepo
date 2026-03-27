@@ -206,7 +206,7 @@ $current_package = (string)($customer['PACKAGE_ID'] ?? '');
 						<div class="form-group">
 							<label for="MEMB_DOB">Date of Birth</label>
 							<input type="date" id="MEMB_DOB" name="MEMB_DOB"
-								value="<?php echo htmlspecialchars($_POST['MEMB_DOB'] ?? ''); ?>"
+								value="<?php echo !empty($customer['MEMB_DOB']) ? date('Y-m-d', strtotime($customer['MEMB_DOB'])) : ''; ?>"
 									min="1900-01-01"
 									max="<?php echo date('Y-m-d'); ?>"
 									required>
@@ -275,13 +275,13 @@ $current_package = (string)($customer['PACKAGE_ID'] ?? '');
                         <div class="form-group">
                             <label for="START_DATE">Start Date</label>
                             <input type="date" id="START_DATE" name="START_DATE"
-                                value="<?php echo field_value($customer, 'START_DATE'); ?>">
+                                value="<?php echo !empty($customer['START_DATE']) ? date('Y-m-d', strtotime($customer['START_DATE'])) : ''; ?>">
                         </div>
 
                         <div class="form-group">
                             <label for="END_DATE">Expiry Date</label>
                             <input type="date" id="END_DATE" name="END_DATE"
-                                value="<?php echo field_value($customer, 'END_DATE'); ?>">
+                                value="<?php echo !empty($customer['END_DATE']) ? date('Y-m-d', strtotime($customer['END_DATE'])) : ''; ?>">
                         </div>
 
                         <!-- QR ID = :QR ID, and Rule ID = :Rule ID, — add back in later -->
