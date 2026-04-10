@@ -1,0 +1,263 @@
+/* ============================================================
+   payments_hub.css — Belle's Training Solutions
+   Windswept Student Consulting 2026
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --bg-main:      #E8F4F8;
+    --bg-card:      #FFFFFF;
+    --primary:      #0077BE;
+    --primary-light:#E8F4F8;
+    --primary-hover:#005f99;
+    --text-body:    #1e3a5f;
+    --text-muted:   #6b7280;
+    --text-white:   #FFFFFF;
+    --success:      #10B981;
+    --danger:       #EF4444;
+    --warning:      #F59E0B;
+    --border:       #E5E7EB;
+    --shadow-sm:    0 1px 3px rgba(0,119,190,0.08);
+    --shadow-md:    0 4px 16px rgba(0,119,190,0.12);
+    --radius-sm:    6px;
+    --radius-md:    10px;
+    --radius-lg:    14px;
+    --font:         'DM Sans', sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: var(--font);
+    background: var(--bg-main);
+    color: var(--text-body);
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.main-content {
+    padding: 28px 24px 40px 12px;
+    min-height: 100vh;
+    min-width: 0;
+}
+
+a { color: var(--primary); text-decoration: none; }
+
+h1 {
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--primary);
+    letter-spacing: -0.02em;
+    margin-bottom: 4px;
+}
+
+.page-subtitle {
+    font-size: 13.5px;
+    color: var(--text-muted);
+}
+
+/* ── Page header ─────────────────────────────────────────────────────── */
+.page-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 28px;
+}
+
+.btn-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13.5px;
+    font-weight: 600;
+    color: var(--primary);
+    background: var(--bg-card);
+    padding: 9px 16px;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-sm);
+    transition: background 0.15s, border-color 0.15s;
+    white-space: nowrap;
+}
+
+.btn-back:hover {
+    background: var(--primary-light);
+    border-color: var(--primary);
+    text-decoration: none;
+}
+
+/* ── Stats row ───────────────────────────────────────────────────────── */
+.stats-row {
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 16px;
+    margin-bottom: 28px;
+}
+
+@media (max-width: 900px) {
+    .stats-row { grid-template-columns: repeat(2, 1fr) !important; }
+}
+
+@media (max-width: 500px) {
+    .stats-row { grid-template-columns: 1fr !important; }
+}
+
+.stat-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 18px 20px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    box-shadow: var(--shadow-sm);
+}
+
+.stat-icon {
+    width: 28px;
+    height: 28px;
+    color: var(--primary);
+    flex-shrink: 0;
+}
+
+.stat-card.stat-warning .stat-icon { color: var(--warning); }
+.stat-card.stat-caution .stat-icon { color: #d97706; }
+.stat-card.stat-danger  .stat-icon { color: var(--danger); }
+
+.stat-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.stat-value {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--text-body);
+    line-height: 1;
+}
+
+.stat-label {
+    font-size: 12px;
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+/* ── Hub cards ───────────────────────────────────────────────────────── */
+.hub-cards {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 20px;
+}
+
+@media (max-width: 700px) {
+    .hub-cards { grid-template-columns: 1fr !important; }
+}
+
+.hub-card {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+    box-shadow: var(--shadow-sm);
+    text-decoration: none;
+    color: var(--text-body);
+    transition: box-shadow 0.15s, border-color 0.15s, transform 0.15s;
+}
+
+.hub-card:hover {
+    box-shadow: var(--shadow-md);
+    border-color: var(--primary);
+    transform: translateY(-2px);
+    text-decoration: none;
+    color: var(--text-body);
+}
+
+.hub-card-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.hub-card-icon i {
+    width: 26px;
+    height: 26px;
+}
+
+.icon-orange          { background: #ffedd5; }
+.icon-orange i        { color: #ea580c; stroke: #ea580c; }
+.icon-teal            { background: #ccfbf1; }
+.icon-teal i          { color: #0d9488; stroke: #0d9488; }
+
+.hub-card-body {
+    flex: 1;
+    min-width: 0;
+}
+
+.hub-card-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text-body);
+    margin-bottom: 6px;
+}
+
+.hub-card-desc {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.5;
+    margin-bottom: 12px;
+}
+
+.hub-card-meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.hub-meta-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 12.5px;
+    font-weight: 600;
+    color: var(--text-muted);
+}
+
+.hub-meta-item i {
+    width: 13px;
+    height: 13px;
+}
+
+.hub-meta-warn   { color: #d97706; }
+.hub-meta-danger { color: var(--danger); }
+.hub-meta-good   { color: var(--success); }
+
+.hub-card-arrow {
+    width: 20px;
+    height: 20px;
+    color: var(--text-muted);
+    flex-shrink: 0;
+    transition: color 0.15s;
+}
+
+.hub-card:hover .hub-card-arrow { color: var(--primary); }
+
+/* ── Footer ──────────────────────────────────────────────────────────── */
+.site-footer {
+    background: var(--bg-card);
+    border-top: 1px solid var(--border);
+    padding: 12px 40px;
+    text-align: right;
+    font-size: 11px;
+    color: var(--text-muted);
+}
