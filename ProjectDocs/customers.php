@@ -124,7 +124,7 @@ $customers = $data_stmt->fetchAll(PDO::FETCH_ASSOC);
     </div>
 
     <nav class="sidebar-nav">
-        <a href="Dashboard.php" class="nav-item">
+        <a href="dashboard.php" class="nav-item">
             <i data-lucide="layout-dashboard" class="nav-icon"></i><span>Dashboard</span>
         </a>
         <a href="customers.php" class="nav-item active">
@@ -360,6 +360,7 @@ $customers = $data_stmt->fetchAll(PDO::FETCH_ASSOC);
 </main>
 
 <footer class="site-footer">
+	<a href="about.php" id="aboutfooter">About WSC</a>
     <p><small>&copy; Windswept Student Consulting 2026</small></p>
 </footer>
 

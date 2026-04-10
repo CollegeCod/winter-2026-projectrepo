@@ -282,6 +282,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </main>
 
 <footer class="site-footer">
+	<a href="about.php" id="aboutfooter">About WSC</a>
     <p><small>&copy; Windswept Student Consulting 2026</small></p>
 </footer>
 

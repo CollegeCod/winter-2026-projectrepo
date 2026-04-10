@@ -8,15 +8,21 @@
 	- 	
 		
 	*/
-	
+/*---- Database & Connections ----*/
+require_once __DIR__ . "/includes/session_manager.php";
+require_once __DIR__ . "/db_connection.php";
+
+//start_secure_session();
+//$pdo = create_database_connection();
+
 	// Requirement & Includes
-	// require_once __DIR__ . "/session_manager.php";
-	// require_once __DIR__ . "/db_connection.php";
+
 	// include __DIR__ . "/logout_modal.php";
 	
 	
 ?>
-
+<?php ?>
+<!DOCTYPE html>
 <html lang="en">
 	<!-- HEAD SECTION-->
 	<head>
@@ -26,9 +32,10 @@
 
 		<!-- Update these paths to match your project -->
 		<link rel="stylesheet" href="css/dashboard.css">
-		<link rel="stylesheet" href="css/customers.css">
+		<link rel="stylesheet" href="css/invoice_hub.css">
 
 		<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+		<?php include "logout_modal.php";?>
 	</head>
 	<body>
 <!-- The sidebar component. Provides navigation between site sections.
@@ -45,43 +52,39 @@
 
 		<nav class="sidebar-nav">
 			<a href="dashboard.php" class="nav-item">
-				<i data-lucide="layout-dashboard" class="nav-icon"></i>
-				<span>Dashboard</span>
+				<i data-lucide="layout-dashboard" class="nav-icon"></i><span>Dashboard</span>
 			</a>
 			<a href="customers.php" class="nav-item">
-				<i data-lucide="users" class="nav-icon"></i>
-				<span>Customers</span>
+				<i data-lucide="users" class="nav-icon"></i><span>Customers</span>
+			</a>
+						<!-- You are here -->
+			<a href="invoice.php" class="nav-item active">
+				<i data-lucide="file-text" class="nav-icon"></i><span>Invoices</span>
 			</a>
 			<a href="qr_code.php" class="nav-item">
-				<i data-lucide="qr-code" class="nav-icon"></i>
-				<span>QR Codes</span>
+				<i data-lucide="qr-code" class="nav-icon"></i><span>QR Codes</span>
 			</a>
 			<!-- THIS ITEM APPEARED TO BE INCORRECTLY PATHED. MAY NEED FIXING FROM "invoices.php" to "payments.php".
 				It is unclear if this item should be combined with invoices into "Invoices & Payments". -->
-			<a href="payments.php" class="nav-item">
+			<!--<a href="payments.php" class="nav-item">
 				<i data-lucide="credit-card" class="nav-icon"></i>
 				<span>Payments</span>
-			</a>
+			</a>-->
 			<a href="renewals.php" class="nav-item">
 				<i data-lucide="refresh-cw" class="nav-icon"></i>
 				<span>Renewals</span>
 			</a>
-			<!-- You are here -->
-			<a href="invoice.php" class="nav-item active">
-				<i data-lucide="file-text" class="nav-icon"></i>
-				<span>Invoice</span>
-			</a>
-			<a href="sys_settings.php" class="nav-item">
+			<a href="settings.php" class="nav-item">
 				<i data-lucide="settings" class="nav-icon"></i>
 				<span>Settings</span>
 			</a>
 		</nav>
 
 		<div class="sidebar-footer">
-			<a href="dashboard.php" class="nav-item">
-				<i data-lucide="arrow-left" class="nav-icon"></i>
-				<span>Back</span>
-			</a>
+			<button data-logout class="nav-item logout">
+				<i data-lucide="log-out" class="nav-icon"></i>
+				<span>Logout</span>
+			</button>
 		</div>
 	</aside>
 <!-- Content Display -->
@@ -90,24 +93,28 @@
 		<div class="page-header">
 			<div>
 				<h1>Invoice Management</h1>
-				<!-- A subtitle would go here, but I'm uncertain if I should put one here.-->
+				<p class="page-subtitle">Manage and monitor invoices and pending payments.</p> <!-- Subtitle may need revising.-->
 			</div>
 		</div>
 		<!-- Main content goes here.-->
-		<div>
+		<div class="test-box">
 			<h2>Invoicing Functionality still in Development!</h2>
 			<br>
 			<h3>The invoice management page would allow for the viewing, search, editing and manual creation of invoices.</h3>
 			<br>
-			<h3>The system would interface with Square's API to enable creation and subsequent request for payments by customers.</h3
+			<h3>The system would interface with Square's API to enable creation and subsequent request for payments by customers.</h3>
 		</div>
 	</main>
 	
-	
+	<?php if (file_exists('logout_modal.php')) { /* include 'logout_modal.php'; */ } ?>
 	<!-- Footer goes here -->
 	<!-- We can probably improve the footer by having it in a single file, and simply including it where needed. -->
 	<footer class="site-footer">
-		<a href="sys_about.php" id="aboutfooter">About WSC</a>
+		<a href="about.php" id="aboutfooter">About WSC</a>
 		<p><small>&copy; Windswept Student Consulting 2026</small></p>
 	</footer>
+	
+	<script>
+		lucide.createIcons();
+	</script>
 </html>

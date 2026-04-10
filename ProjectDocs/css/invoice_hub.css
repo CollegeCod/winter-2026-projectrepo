@@ -1,0 +1,49 @@
+/* invoice_hub.css 
+	Windswept Student Consulting, 2026-4-08
+	Created by Malcolm Ng
+	======
+	CSS style formatting tailored for "invoice/invoice_hub.php"
+	
+*/
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&display=swap');
+/* Because I include dashboard CSS alongside this, I'm not duplicating the root CSS here.*/
+
+/* ============================================================
+   RESET & BASE
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; }
+/* Borrowed from customers.css for the sake of consistency.*/
+body {
+    font-family: var(--font);
+    background: var(--bg-main);
+    color: var(--text-body);
+    font-size: 14px;
+    line-height: 1.5;
+    padding: 0;
+}
+
+a {
+    color: var(--primary);
+    text-decoration: none;
+}
+
+a:hover { text-decoration: underline; }
+/* Containers & Layout */
+.main-content { 
+    padding: 28px 24px 40px 12px;
+    min-height: 100vh;
+    box-sizing: border-box;
+    min-width: 0;
+}/*Also borrowed.*/
+
+.container{
+	
+}
+
+.test-box{
+	border: 5px solid black;
+	min-height: 50px;
+	min-width: 50px;
+	background: var(--bg-main);
+}

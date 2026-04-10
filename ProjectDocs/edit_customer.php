@@ -116,13 +116,13 @@ $current_package = (string)($customer['PACKAGE_ID'] ?? '');
         </div>
     </div>
     <nav class="sidebar-nav">
-        <a href="Dashboard.php" class="nav-item">
+        <a href="dashboard.php" class="nav-item">
             <i data-lucide="layout-dashboard" class="nav-icon"></i><span>Dashboard</span>
         </a>
         <a href="customers.php" class="nav-item active">
             <i data-lucide="users" class="nav-icon"></i><span>Customers</span>
         </a>
-        <a href="qr_codes.php" class="nav-item">
+        <a href="qr_code.php" class="nav-item">
             <i data-lucide="qr-code" class="nav-icon"></i><span>QR Codes</span>
         </a>
         <a href="invoices_hub.php" class="nav-item">
