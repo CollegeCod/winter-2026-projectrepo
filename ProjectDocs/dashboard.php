@@ -31,25 +31,23 @@
         </div>
 
     <nav class="sidebar-nav">
-        <a href="Dashboard.php" class="nav-item active">
-            <i data-lucide="layout-dashboard" class="nav-icon"></i>
-            <span>Dashboard</span>
+        <a href="dashboard.php" class="nav-item active">
+            <i data-lucide="layout-dashboard" class="nav-icon"></i><span>Dashboard</span>
         </a>
         <a href="customers.php" class="nav-item">
-            <i data-lucide="users" class="nav-icon"></i>
-            <span>Customers</span>
+            <i data-lucide="users" class="nav-icon"></i><span>Customers</span>
         </a>
         <a href="invoice_hub.php" class="nav-item">
-            <i data-lucide="credit-card" class="nav-icon"></i>
-            <span>Payments, Invoices & Renewals</span>
+            <i data-lucide="credit-card" class="nav-icon"></i><span>Payments, Invoices & Renewals</span>
         </a>
-		<a href="Reports.php" class="nav-item">
-			<i data-lucide="bar-chart-2" class="nav-icon"></i>
-			<span>Reports</span>
+		<a href="qr_code.php" class="nav-item">
+			<i data-lucide="qr-code" class="nav-icon"></i><span>QR Codes</span>
+		</a>
+		<a href="reports.php" class="nav-item">
+			<i data-lucide="bar-chart-2" class="nav-icon"></i><span>Reports</span>
 		</a>
         <a href="settings.php" class="nav-item">
-            <i data-lucide="settings" class="nav-icon"></i>
-            <span>Settings</span>
+            <i data-lucide="settings" class="nav-icon"></i><span>Settings</span>
         </a>
     </nav>
 
