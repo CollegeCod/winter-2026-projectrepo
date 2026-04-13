@@ -1,5 +1,5 @@
 <?php
-// new_customer.php
+// new-customer.php
 // Creates a new customer record
 
 require_once __DIR__ . "/includes/session_manager.php";
@@ -33,8 +33,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $error_msg = 'First name and last name are required.';
     } elseif ($fields['MEMB_EMAIL'] === '' || !filter_var($fields['MEMB_EMAIL'], FILTER_VALIDATE_EMAIL)) {
         $error_msg = 'Please enter a valid email address.';
-    } elseif ($fields['MEMB_PHONE'] === '' || !preg_match('/^\+1 [0-9]{3}-[0-9]{3}-[0-9]{4}$/', $fields['MEMB_PHONE'])) {
-        $error_msg = 'Please enter a valid phone number (e.g. +1 555-123-4567).';
+    } elseif ($fields['MEMB_PHONE'] === '') {
+        $error_msg = 'Please enter a phone number.';
     } elseif ($fields['MEMB_DOB'] === '') {
         $error_msg = 'Date of birth is required.';
     } elseif ($fields['PACKAGE_ID'] === '') {
@@ -70,8 +70,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Customer</title>
-    <link rel="stylesheet" href="css/dashboard.css">
-    <link rel="stylesheet" href="css/customers.css">
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="customers.css">
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
 </head>
 <body>
@@ -98,11 +98,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <a href="qr_codes.php" class="nav-item">
             <i data-lucide="qr-code" class="nav-icon"></i><span>QR Codes</span>
         </a>
-        <a href="invoices_hub.php" class="nav-item">
-            <i data-lucide="credit-card" class="nav-icon"></i><span>Payments, Invoices & Renewals</span>
+        <a href="Invoices.php" class="nav-item">
+            <i data-lucide="credit-card" class="nav-icon"></i><span>Payments</span>
         </a>
-        <a href="reports.php" class="nav-item">
-            <i data-lucide="bar-chart-2" class="nav-icon"></i><span>Reports</span>
+        <a href="renewal.php" class="nav-item">
+            <i data-lucide="refresh-cw" class="nav-icon"></i><span>Renewals</span>
+        </a>
+        <a href="invoice.php" class="nav-item">
+            <i data-lucide="file-text" class="nav-icon"></i><span>Invoice</span>
         </a>
         <a href="settings.php" class="nav-item">
             <i data-lucide="settings" class="nav-icon"></i><span>Settings</span>
@@ -141,7 +144,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <?php endif; ?>
 
     <div class="table-card edit-card">
-        <form method="POST" action="new_customer.php">
+        <form method="POST" action="new-customer.php">
 
             <div class="form-sections-row">
 
@@ -190,12 +193,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             <label for="MEMB_PHONE">Phone Number</label>
                             <input type="tel" id="MEMB_PHONE" name="MEMB_PHONE"
                                 value="<?php echo htmlspecialchars($_POST['MEMB_PHONE'] ?? ''); ?>"
-                                placeholder="+1 000-000-0000"
-                                pattern="^\+1 [0-9]{3}-[0-9]{3}-[0-9]{4}$"
-                                title="Please enter a valid phone number (e.g. +1 555-123-4567)"
-                                maxlength="15"
+                                placeholder="e.g. 403-555-0101 or +1 403-555-0101"
+                                maxlength="20"
                                 required>
-                            <span class="field-hint">e.g. +1 555-123-4567</span>
+                            <span class="field-hint">With or without country code</span>
                         </div>
 
                     </div>
@@ -289,31 +290,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <script>
 lucide.createIcons();
-
-// ── Phone number auto-formatter ───────────────────────────────────────────
-var phone_input = document.getElementById('MEMB_PHONE');
-
-phone_input.addEventListener('input', function () {
-    var digits = this.value.replace(/^\+1\s?/, '').replace(/[^\d]/g, '').slice(0, 10);
-    var formatted = '';
-    if (digits.length === 0) {
-        formatted = '';
-    } else if (digits.length <= 3) {
-        formatted = '+1 ' + digits;
-    } else if (digits.length <= 6) {
-        formatted = '+1 ' + digits.slice(0, 3) + '-' + digits.slice(3);
-    } else {
-        formatted = '+1 ' + digits.slice(0, 3) + '-' + digits.slice(3, 6) + '-' + digits.slice(6, 10);
-    }
-    this.value = formatted;
-});
-
-phone_input.addEventListener('keydown', function (e) {
-    if ((e.key === 'Backspace' || e.key === 'Delete') && this.value === '+1 ') {
-        e.preventDefault();
-        this.value = '';
-    }
-});
 
 // ── Inline validation feedback ────────────────────────────────────────────
 function validate_field(input) {

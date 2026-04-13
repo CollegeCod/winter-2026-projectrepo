@@ -25,15 +25,16 @@ if (!$memb_id) {
 // ── Handle form submission ─────────────────────────────────────────────────
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $fields = [
-        'MEMB_FNAME'  => trim($_POST['MEMB_FNAME']  ?? ''),
-        'MEMB_LNAME'  => trim($_POST['MEMB_LNAME']  ?? ''),
-        'PACKAGE_ID'  => (int) trim($_POST['PACKAGE_ID'] ?? 0),
-        'MEMB_PHONE'  => trim($_POST['MEMB_PHONE']  ?? ''),
-        'MEMB_EMAIL'  => trim($_POST['MEMB_EMAIL']  ?? ''),
-        'MEMB_DOB'    => trim($_POST['MEMB_DOB']    ?? ''),
-        'START_DATE'  => trim($_POST['START_DATE']  ?? ''),
-        'END_DATE'    => trim($_POST['END_DATE']    ?? ''),
-        'NOTES'       => trim($_POST['NOTES']       ?? ''),
+        'MEMB_FNAME'      => trim($_POST['MEMB_FNAME']      ?? ''),
+        'MEMB_LNAME'      => trim($_POST['MEMB_LNAME']      ?? ''),
+        'PACKAGE_ID'      => (int) trim($_POST['PACKAGE_ID']  ?? 0),
+        'MEMB_STATUS_ID'  => (int) trim($_POST['MEMB_STATUS_ID'] ?? 1),
+        'MEMB_PHONE'      => trim($_POST['MEMB_PHONE']      ?? ''),
+        'MEMB_EMAIL'      => trim($_POST['MEMB_EMAIL']      ?? ''),
+        'MEMB_DOB'        => trim($_POST['MEMB_DOB']        ?? ''),
+        'START_DATE'      => trim($_POST['START_DATE']      ?? ''),
+        'END_DATE'        => trim($_POST['END_DATE']        ?? ''),
+        'NOTES'           => trim($_POST['NOTES']           ?? ''),
     ];
 
     // Server-side validation
@@ -41,8 +42,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $error_msg = 'First name and last name are required.';
     } elseif ($fields['MEMB_EMAIL'] === '' || !filter_var($fields['MEMB_EMAIL'], FILTER_VALIDATE_EMAIL)) {
         $error_msg = 'Please enter a valid email address.';
-    } elseif ($fields['MEMB_PHONE'] === '' || !preg_match('/^\+1 [0-9]{3}-[0-9]{3}-[0-9]{4}$/', $fields['MEMB_PHONE'])) {
-        $error_msg = 'Please enter a valid phone number (e.g. +1 555-123-4567).';
+    } elseif ($fields['MEMB_PHONE'] === '') {
+        $error_msg = 'Please enter a phone number.';
     } elseif ($fields['MEMB_DOB'] === '') {
         $error_msg = 'Date of birth is required.';
     } elseif ($fields['PACKAGE_ID'] === 0) {
@@ -50,16 +51,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } else {
         try {
             $stmt = $pdo->prepare("UPDATE $table SET
-                MEMB_FNAME  = :MEMB_FNAME,
-                MEMB_LNAME  = :MEMB_LNAME,
-                PACKAGE_ID  = :PACKAGE_ID,
-                MEMB_PHONE  = :MEMB_PHONE,
-                MEMB_EMAIL  = :MEMB_EMAIL,
-                MEMB_DOB    = :MEMB_DOB,
-                START_DATE  = :START_DATE,
-                END_DATE    = :END_DATE,
-                NOTES       = :NOTES
-                WHERE MEMB_ID = :MEMB_ID");
+                MEMB_FNAME      = :MEMB_FNAME,
+                MEMB_LNAME      = :MEMB_LNAME,
+                PACKAGE_ID      = :PACKAGE_ID,
+                MEMB_STATUS_ID  = :MEMB_STATUS_ID,
+                MEMB_PHONE      = :MEMB_PHONE,
+                MEMB_EMAIL      = :MEMB_EMAIL,
+                MEMB_DOB        = :MEMB_DOB,
+                START_DATE      = :START_DATE,
+                END_DATE        = :END_DATE,
+                NOTES           = :NOTES
+                WHERE MEMB_ID   = :MEMB_ID");
 
             foreach ($fields as $key => $value) {
                 $stmt->bindValue(':' . $key, $value);
@@ -90,6 +92,8 @@ function field_value($customer, $key) {
 
 $full_name       = trim(field_value($customer, 'MEMB_FNAME') . ' ' . field_value($customer, 'MEMB_LNAME'));
 $current_package = (string)($customer['PACKAGE_ID'] ?? '');
+$current_status  = (string)($customer['MEMB_STATUS_ID'] ?? '1');
+$statuses        = $pdo->query("SELECT MEMB_STATUS_ID, MEMB_STATUS_NAME FROM memb_status ORDER BY MEMB_STATUS_ID ASC")->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -227,12 +231,10 @@ $current_package = (string)($customer['PACKAGE_ID'] ?? '');
                             <label for="MEMB_PHONE">Phone Number</label>
                             <input type="tel" id="MEMB_PHONE" name="MEMB_PHONE"
                                 value="<?php echo field_value($customer, 'MEMB_PHONE'); ?>"
-                                placeholder="+1 000-000-0000"
-                                pattern="^\+1 [0-9]{3}-[0-9]{3}-[0-9]{4}$"
-                                title="Please enter a valid phone number (e.g. +1 555-123-4567)"
-                                maxlength="15"
+                                placeholder="e.g. 403-555-0101 or +1 403-555-0101"
+                                maxlength="20"
                                 required>
-                            <span class="field-hint">e.g. +1 555-123-4567</span>
+                            <span class="field-hint">With or without country code</span>
                         </div>
 
                     </div>
@@ -269,6 +271,18 @@ $current_package = (string)($customer['PACKAGE_ID'] ?? '');
                                     <option value="11" <?php echo $current_package === '11' ? 'selected' : ''; ?>>Ultimate — 6 Month</option>
                                     <option value="12" <?php echo $current_package === '12' ? 'selected' : ''; ?>>Ultimate — 1 Year</option>
                                 </optgroup>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="MEMB_STATUS_ID">Member Status</label>
+                            <select id="MEMB_STATUS_ID" name="MEMB_STATUS_ID" required>
+                                <?php foreach ($statuses as $status): ?>
+                                    <option value="<?php echo $status['MEMB_STATUS_ID']; ?>"
+                                        <?php echo $current_status === (string)$status['MEMB_STATUS_ID'] ? 'selected' : ''; ?>>
+                                        <?php echo htmlspecialchars($status['MEMB_STATUS_NAME']); ?>
+                                    </option>
+                                <?php endforeach; ?>
                             </select>
                         </div>
 
@@ -343,31 +357,6 @@ $current_package = (string)($customer['PACKAGE_ID'] ?? '');
 
 <script>
 lucide.createIcons();
-
-// ── Phone number auto-formatter ───────────────────────────────────────────
-var phone_input = document.getElementById('MEMB_PHONE');
-
-phone_input.addEventListener('input', function () {
-    var digits = this.value.replace(/^\+1\s?/, '').replace(/[^\d]/g, '').slice(0, 10);
-    var formatted = '';
-    if (digits.length === 0) {
-        formatted = '';
-    } else if (digits.length <= 3) {
-        formatted = '+1 ' + digits;
-    } else if (digits.length <= 6) {
-        formatted = '+1 ' + digits.slice(0, 3) + '-' + digits.slice(3);
-    } else {
-        formatted = '+1 ' + digits.slice(0, 3) + '-' + digits.slice(3, 6) + '-' + digits.slice(6, 10);
-    }
-    this.value = formatted;
-});
-
-phone_input.addEventListener('keydown', function (e) {
-    if ((e.key === 'Backspace' || e.key === 'Delete') && this.value === '+1 ') {
-        e.preventDefault();
-        this.value = '';
-    }
-});
 
 // ── DOB auto-formatter ────────────────────────────────────────────
 document.getElementById('MEMB_DOB').addEventListener('blur', function () {

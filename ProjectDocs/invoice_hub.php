@@ -145,7 +145,7 @@ $total_invoices = (int)$pdo->query("SELECT COUNT(*) FROM invoice")->fetchColumn(
             <i data-lucide="chevron-right" class="hub-card-arrow"></i>
         </a>
 
-        <a href="renewal.php" class="hub-card">
+        <a href="renewals.php" class="hub-card">
             <div class="hub-card-icon icon-teal">
                 <i data-lucide="refresh-cw"></i>
             </div>
