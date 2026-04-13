@@ -270,7 +270,7 @@ $all_ids = implode(',', array_column($members, 'MEMB_ID'));
                 <i data-lucide="arrow-left"></i> Back
             </a>
             <?php if (count($members) > 0): ?>
-                <form method="POST" action="renewal.php?filter=<?php echo urlencode($filter); ?>">
+                <form method="POST" action="renewals.php?filter=<?php echo urlencode($filter); ?>">
                     <input type="hidden" name="send_all" value="1">
                     <input type="hidden" name="all_ids" value="<?php echo htmlspecialchars($all_ids); ?>">
                     <button type="submit" class="btn-send-all">
