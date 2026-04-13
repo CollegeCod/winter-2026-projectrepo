@@ -130,10 +130,7 @@ $customers = $data_stmt->fetchAll(PDO::FETCH_ASSOC);
         <a href="customers.php" class="nav-item active">
             <i data-lucide="users" class="nav-icon"></i><span>Customers</span>
         </a>
-        <a href="qr_codes.php" class="nav-item">
-            <i data-lucide="qr-code" class="nav-icon"></i><span>QR Codes</span>
-        </a>
-        <a href="invoices_hub.php" class="nav-item">
+        <a href="invoice_hub.php" class="nav-item">
             <i data-lucide="credit-card" class="nav-icon"></i><span>Payments, Invoices & Renewals</span>
         </a>
         <a href="reports.php" class="nav-item">
