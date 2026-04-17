@@ -391,12 +391,16 @@ h1 + p > strong {
 }
 
 /* Edit form wrapper */
-form[method="POST"] {
+.edit-card form[method="POST"] {
     background: var(--bg-card);
     border: 1px solid var(--border);
     border-radius: var(--radius-lg);
     padding: 28px 32px;
     box-shadow: var(--shadow-sm);
+}
+
+/* Form grid — 2 columns for fields inside each section */
+.form-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 16px 24px;
@@ -404,7 +408,7 @@ form[method="POST"] {
 }
 
 /* Labels */
-form[method="POST"] label {
+.edit-card form[method="POST"] label {
     display: block;
     font-size: 13px;
     font-weight: 600;
@@ -413,7 +417,7 @@ form[method="POST"] label {
 }
 
 /* Select dropdown */
-form[method="POST"] select {
+.edit-card form[method="POST"] select {
     width: 100%;
     font-family: var(--font);
     font-size: 14px;
@@ -432,26 +436,26 @@ form[method="POST"] select {
     transition: border-color 0.15s, box-shadow 0.15s;
 }
 
-form[method="POST"] select:focus {
+.edit-card form[method="POST"] select:focus {
     border-color: var(--primary);
     box-shadow: 0 0 0 3px rgba(0,119,190,0.10);
     background-color: var(--bg-card);
 }
 
-form[method="POST"] select optgroup {
+.edit-card form[method="POST"] select optgroup {
     font-weight: 700;
     color: var(--primary);
 }
 
-form[method="POST"] select option {
+.edit-card form[method="POST"] select option {
     font-weight: 400;
     color: var(--text-body);
 }
 
 /* Text, email, date inputs */
-form[method="POST"] input[type="text"],
-form[method="POST"] input[type="email"],
-form[method="POST"] input[type="date"] {
+.edit-card form[method="POST"] input[type="text"],
+.edit-card form[method="POST"] input[type="email"],
+.edit-card form[method="POST"] input[type="date"] {
     width: 100%;
     font-family: var(--font);
     font-size: 14px;
@@ -464,16 +468,16 @@ form[method="POST"] input[type="date"] {
     transition: border-color 0.15s, box-shadow 0.15s;
 }
 
-form[method="POST"] input[type="text"]:focus,
-form[method="POST"] input[type="email"]:focus,
-form[method="POST"] input[type="date"]:focus {
+.edit-card form[method="POST"] input[type="text"]:focus,
+.edit-card form[method="POST"] input[type="email"]:focus,
+.edit-card form[method="POST"] input[type="date"]:focus {
     border-color: var(--primary);
     box-shadow: 0 0 0 3px rgba(0,119,190,0.10);
     background: var(--bg-card);
 }
 
 /* Textarea (Notes) — span full width */
-form[method="POST"] textarea {
+.edit-card form[method="POST"] textarea {
     grid-column: 1 / -1;
     width: 100%;
     font-family: var(--font);
@@ -488,14 +492,14 @@ form[method="POST"] textarea {
     transition: border-color 0.15s, box-shadow 0.15s;
 }
 
-form[method="POST"] textarea:focus {
+.edit-card form[method="POST"] textarea:focus {
     border-color: var(--primary);
     box-shadow: 0 0 0 3px rgba(0,119,190,0.10);
     background: var(--bg-card);
 }
 
 /* Hidden CSRF input — keep invisible */
-form[method="POST"] input[type="hidden"] {
+.edit-card form[method="POST"] input[type="hidden"] {
     display: none;
 }
 
@@ -507,19 +511,19 @@ form[method="POST"] input[type="hidden"] {
 }
 
 /* Validation states */
-form[method="POST"] input.input-invalid {
+.edit-card form[method="POST"] input.input-invalid {
     border-color: var(--danger);
     box-shadow: 0 0 0 3px rgba(239,68,68,0.10);
     background: #fff5f5;
 }
 
-form[method="POST"] input.input-valid {
+.edit-card form[method="POST"] input.input-valid {
     border-color: var(--success);
     box-shadow: 0 0 0 3px rgba(16,185,129,0.10);
 }
 
 /* Save Changes button */
-form[method="POST"] button[type="submit"] {
+.edit-card form[method="POST"] button[type="submit"] {
     grid-column: 1 / -1;
     justify-self: end;
     display: inline-flex;
@@ -537,13 +541,13 @@ form[method="POST"] button[type="submit"] {
     transition: background 0.15s, transform 0.15s;
 }
 
-form[method="POST"] button[type="submit"]:hover {
+.edit-card form[method="POST"] button[type="submit"]:hover {
     background: var(--primary-hover);
     transform: translateY(-1px);
 }
 
 /* Cancel link — sits beside the Save button */
-form[method="POST"] a[href*="customers"] {
+.edit-card form[method="POST"] a[href*="customers"] {
     grid-column: 1 / -1;
     justify-self: end;
     margin-top: -44px; /* pull up beside the Save button */
@@ -561,7 +565,7 @@ form[method="POST"] a[href*="customers"] {
     transition: background 0.15s, border-color 0.15s;
 }
 
-form[method="POST"] a[href*="customers"]:hover {
+.edit-card form[method="POST"] a[href*="customers"]:hover {
     background: var(--primary-light);
     border-color: var(--primary);
     text-decoration: none;
@@ -584,12 +588,12 @@ form[method="POST"] a[href*="customers"]:hover {
    RESPONSIVE
    ============================================================ */
 @media (max-width: 900px) {
-    form[method="POST"] {
+    .form-grid {
         grid-template-columns: 1fr;
     }
-    form[method="POST"] textarea { grid-column: 1; }
-    form[method="POST"] button[type="submit"] { grid-column: 1; justify-self: stretch; }
-    form[method="POST"] a[href*="customers"] {
+    .edit-card form[method="POST"] textarea { grid-column: 1; }
+    .edit-card form[method="POST"] button[type="submit"] { grid-column: 1; justify-self: stretch; }
+    .edit-card form[method="POST"] a[href*="customers"] {
         grid-column: 1;
         justify-self: stretch;
         margin-top: 0;
