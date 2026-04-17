@@ -58,7 +58,7 @@ $total_invoices = (int)$pdo->query("SELECT COUNT(*) FROM invoice")->fetchColumn(
             <i data-lucide="users" class="nav-icon"></i><span>Customers</span>
         </a>
         <a href="invoice_hub.php" class="nav-item active">
-            <i data-lucide="credit-card" class="nav-icon"></i><span>Payments & invoices/ Renewals</span>
+            <i data-lucide="credit-card" class="nav-icon"></i><span>Payments, Invoices & Renewals</span>
         </a>
         <a href="reports.php" class="nav-item">
             <i data-lucide="bar-chart-2" class="nav-icon"></i><span>Reports</span>
