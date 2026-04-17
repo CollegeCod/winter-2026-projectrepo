@@ -241,7 +241,7 @@ $all_ids = implode(',', array_column($members, 'MEMB_ID'));
         <a href="invoices.php" class="nav-item">
             <i data-lucide="credit-card" class="nav-icon"></i><span>Payments</span>
         </a>
-        <a href="renewal.php" class="nav-item active">
+        <a href="renewals.php" class="nav-item active">
             <i data-lucide="refresh-cw" class="nav-icon"></i><span>Renewals</span>
         </a>
         <a href="reports.php" class="nav-item">
@@ -266,7 +266,7 @@ $all_ids = implode(',', array_column($members, 'MEMB_ID'));
             <p class="page-subtitle">Track upcoming expirations and send renewal reminders.</p>
         </div>
         <div class="header-actions">
-            <a href="payments_hub.php" class="btn-back">
+            <a href="Invoice_hub.php" class="btn-back">
                 <i data-lucide="arrow-left"></i> Back
             </a>
             <?php if (count($members) > 0): ?>
@@ -297,28 +297,28 @@ $all_ids = implode(',', array_column($members, 'MEMB_ID'));
 
     <!-- ── Filter tabs ──────────────────────────────────────────────────── -->
     <div class="filter-tabs">
-        <a href="renewal.php?filter=all"
+        <a href="renewals.php?filter=all"
            class="filter-tab <?php echo $filter === 'all' ? 'active' : ''; ?>">
             <i data-lucide="list"></i> All
         </a>
-        <a href="renewal.php?filter=15"
+        <a href="renewals.php?filter=15"
            class="filter-tab <?php echo $filter === '15' ? 'active' : ''; ?>">
             <i data-lucide="clock"></i> 15 Days or Less
         </a>
-        <a href="renewal.php?filter=10"
+        <a href="renewals.php?filter=10"
            class="filter-tab <?php echo $filter === '10' ? 'active' : ''; ?>">
             <i data-lucide="clock"></i> 10 Days or Less
         </a>
-        <a href="renewal.php?filter=5"
+        <a href="renewals.php?filter=5"
            class="filter-tab <?php echo $filter === '5' ? 'active' : ''; ?>">
             <i data-lucide="clock"></i> 5 Days or Less
         </a>
-        <a href="renewal.php?filter=expired"
+        <a href="renewals.php?filter=expired"
            class="filter-tab filter-tab-danger <?php echo $filter === 'expired' ? 'active' : ''; ?>">
             <i data-lucide="x-circle"></i> Expired
         </a>
         <?php if ($filter !== 'all'): ?>
-            <a href="renewal.php" class="filter-tab filter-tab-reset">
+            <a href="renewals.php" class="filter-tab filter-tab-reset">
                 <i data-lucide="rotate-ccw"></i> Reset
             </a>
         <?php endif; ?>
@@ -372,7 +372,7 @@ $all_ids = implode(',', array_column($members, 'MEMB_ID'));
                                     <?php endif; ?>
                                 </td>
                                 <td>
-                                    <form method="POST" action="renewal.php?filter=<?php echo urlencode($filter); ?>">
+                                    <form method="POST" action="renewals.php?filter=<?php echo urlencode($filter); ?>">
                                         <input type="hidden" name="send_single" value="1">
                                         <input type="hidden" name="memb_id" value="<?php echo (int)$m['MEMB_ID']; ?>">
                                         <button type="submit" class="btn-send-single">

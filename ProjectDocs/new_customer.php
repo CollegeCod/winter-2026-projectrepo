@@ -1,5 +1,5 @@
 <?php
-// new-customer.php
+// new_customer.php
 // Creates a new customer record
 
 require_once __DIR__ . "/includes/session_manager.php";
@@ -33,8 +33,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $error_msg = 'First name and last name are required.';
     } elseif ($fields['MEMB_EMAIL'] === '' || !filter_var($fields['MEMB_EMAIL'], FILTER_VALIDATE_EMAIL)) {
         $error_msg = 'Please enter a valid email address.';
-    } elseif ($fields['MEMB_PHONE'] === '') {
-        $error_msg = 'Please enter a phone number.';
+    } elseif ($fields['MEMB_PHONE'] === '' || !preg_match('/^\([0-9]{3}\) [0-9]{3}-[0-9]{4}$/', $fields['MEMB_PHONE'])) {
+        $error_msg = 'Please enter a valid phone number (e.g. (123) 456-7890).';
     } elseif ($fields['MEMB_DOB'] === '') {
         $error_msg = 'Date of birth is required.';
     } elseif ($fields['PACKAGE_ID'] === '') {
@@ -70,8 +70,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Customer</title>
-    <link rel="stylesheet" href="dashboard.css">
-    <link rel="stylesheet" href="customers.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/customers.css">
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
 </head>
 <body>
@@ -144,7 +144,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <?php endif; ?>
 
     <div class="table-card edit-card">
-        <form method="POST" action="new-customer.php">
+        <form method="POST" action="new_customer.php">
 
             <div class="form-sections-row">
 
@@ -175,6 +175,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             <label for="MEMB_DOB">Date of Birth</label>
                             <input type="date" id="MEMB_DOB" name="MEMB_DOB"
                                 value="<?php echo htmlspecialchars($_POST['MEMB_DOB'] ?? ''); ?>"
+                                min="1900-01-01"
+                                max="<?php echo date('Y-m-d'); ?>"
                                 required>
                         </div>
 
@@ -193,10 +195,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             <label for="MEMB_PHONE">Phone Number</label>
                             <input type="tel" id="MEMB_PHONE" name="MEMB_PHONE"
                                 value="<?php echo htmlspecialchars($_POST['MEMB_PHONE'] ?? ''); ?>"
-                                placeholder="e.g. 403-555-0101 or +1 403-555-0101"
-                                maxlength="20"
+                                placeholder="(123) 456-7890"
+                                pattern="^\([0-9]{3}\) [0-9]{3}-[0-9]{4}$"
+                                title="Please enter a valid phone number in the format (123) 456-7890"
+                                maxlength="14"
                                 required>
-                            <span class="field-hint">With or without country code</span>
+                            <span class="field-hint">Format: (123) 456-7890</span>
                         </div>
 
                     </div>
@@ -216,22 +220,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             <select id="PACKAGE_ID" name="PACKAGE_ID" required>
                                 <option value="">— Select a package —</option>
                                 <optgroup label="Basic">
-                                    <option value="1"  <?php echo ($_POST['PACKAGE_ID'] ?? '') === '1'  ? 'selected' : ''; ?>>Basic — 1 Month</option>
-                                    <option value="2"  <?php echo ($_POST['PACKAGE_ID'] ?? '') === '2'  ? 'selected' : ''; ?>>Basic — 3 Month</option>
-                                    <option value="3"  <?php echo ($_POST['PACKAGE_ID'] ?? '') === '3'  ? 'selected' : ''; ?>>Basic — 6 Month</option>
-                                    <option value="4"  <?php echo ($_POST['PACKAGE_ID'] ?? '') === '4'  ? 'selected' : ''; ?>>Basic — 1 Year</option>
+                                    <option value="1" data-days="30" <?php echo ($_POST['PACKAGE_ID'] ?? '') === '1'  ? 'selected' : ''; ?>>Basic — 1 Month</option>
+                                    <option value="2" data-days="90" <?php echo ($_POST['PACKAGE_ID'] ?? '') === '2'  ? 'selected' : ''; ?>>Basic — 3 Month</option>
+                                    <option value="3" data-days="180" <?php echo ($_POST['PACKAGE_ID'] ?? '') === '3'  ? 'selected' : ''; ?>>Basic — 6 Month</option>
+                                    <option value="4" data-days="365" <?php echo ($_POST['PACKAGE_ID'] ?? '') === '4'  ? 'selected' : ''; ?>>Basic — 1 Year</option>
                                 </optgroup>
                                 <optgroup label="Intermediate">
-                                    <option value="5"  <?php echo ($_POST['PACKAGE_ID'] ?? '') === '5'  ? 'selected' : ''; ?>>Intermediate — 1 Month</option>
-                                    <option value="6"  <?php echo ($_POST['PACKAGE_ID'] ?? '') === '6'  ? 'selected' : ''; ?>>Intermediate — 3 Month</option>
-                                    <option value="7"  <?php echo ($_POST['PACKAGE_ID'] ?? '') === '7'  ? 'selected' : ''; ?>>Intermediate — 6 Month</option>
-                                    <option value="8"  <?php echo ($_POST['PACKAGE_ID'] ?? '') === '8'  ? 'selected' : ''; ?>>Intermediate — 1 Year</option>
+                                    <option value="5" data-days="30" <?php echo ($_POST['PACKAGE_ID'] ?? '') === '5'  ? 'selected' : ''; ?>>Intermediate — 1 Month</option>
+                                    <option value="6" data-days="90" <?php echo ($_POST['PACKAGE_ID'] ?? '') === '6'  ? 'selected' : ''; ?>>Intermediate — 3 Month</option>
+                                    <option value="7" data-days="180" <?php echo ($_POST['PACKAGE_ID'] ?? '') === '7'  ? 'selected' : ''; ?>>Intermediate — 6 Month</option>
+                                    <option value="8" data-days="365" <?php echo ($_POST['PACKAGE_ID'] ?? '') === '8'  ? 'selected' : ''; ?>>Intermediate — 1 Year</option>
                                 </optgroup>
                                 <optgroup label="Ultimate">
-                                    <option value="9"  <?php echo ($_POST['PACKAGE_ID'] ?? '') === '9'  ? 'selected' : ''; ?>>Ultimate — 1 Month</option>
-                                    <option value="10" <?php echo ($_POST['PACKAGE_ID'] ?? '') === '10' ? 'selected' : ''; ?>>Ultimate — 3 Month</option>
-                                    <option value="11" <?php echo ($_POST['PACKAGE_ID'] ?? '') === '11' ? 'selected' : ''; ?>>Ultimate — 6 Month</option>
-                                    <option value="12" <?php echo ($_POST['PACKAGE_ID'] ?? '') === '12' ? 'selected' : ''; ?>>Ultimate — 1 Year</option>
+                                    <option value="9" data-days="30" <?php echo ($_POST['PACKAGE_ID'] ?? '') === '9'  ? 'selected' : ''; ?>>Ultimate — 1 Month</option>
+                                    <option value="10" data-days="90" <?php echo ($_POST['PACKAGE_ID'] ?? '') === '10' ? 'selected' : ''; ?>>Ultimate — 3 Month</option>
+                                    <option value="11" data-days="180" <?php echo ($_POST['PACKAGE_ID'] ?? '') === '11' ? 'selected' : ''; ?>>Ultimate — 6 Month</option>
+                                    <option value="12" data-days="365" <?php echo ($_POST['PACKAGE_ID'] ?? '') === '12' ? 'selected' : ''; ?>>Ultimate — 1 Year</option>
                                 </optgroup>
                             </select>
                         </div>
@@ -290,6 +294,49 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <script>
 lucide.createIcons();
+
+// ── Auto-fill End Date based on package + start date ─────────────────────
+function updateEndDate() {
+    var pkg_select = document.getElementById('PACKAGE_ID');
+    var start_input = document.getElementById('START_DATE');
+    var end_input   = document.getElementById('END_DATE');
+    if (!pkg_select || !start_input || !end_input) return;
+
+    var selected = pkg_select.options[pkg_select.selectedIndex];
+    var days = selected ? parseInt(selected.dataset.days) : 0;
+    if (!days || !start_input.value) return;
+
+    var start = new Date(start_input.value + 'T00:00:00');
+    start.setDate(start.getDate() + days);
+    var yyyy = start.getFullYear();
+    var mm   = String(start.getMonth() + 1).padStart(2, '0');
+    var dd   = String(start.getDate()).padStart(2, '0');
+    end_input.value = yyyy + '-' + mm + '-' + dd;
+}
+
+var pkg_select = document.getElementById('PACKAGE_ID');
+var start_input = document.getElementById('START_DATE');
+if (pkg_select)  pkg_select.addEventListener('change', updateEndDate);
+if (start_input) start_input.addEventListener('change', updateEndDate);
+
+// ── Phone number auto-formatter: (123) 456-7890 ──────────────────────────
+var phone_input = document.getElementById('MEMB_PHONE');
+if (phone_input) {
+    phone_input.addEventListener('input', function () {
+        var digits = this.value.replace(/[^\d]/g, '').slice(0, 10);
+        var formatted = '';
+        if (digits.length === 0) {
+            formatted = '';
+        } else if (digits.length <= 3) {
+            formatted = '(' + digits;
+        } else if (digits.length <= 6) {
+            formatted = '(' + digits.slice(0, 3) + ') ' + digits.slice(3);
+        } else {
+            formatted = '(' + digits.slice(0, 3) + ') ' + digits.slice(3, 6) + '-' + digits.slice(6, 10);
+        }
+        this.value = formatted;
+    });
+}
 
 // ── Inline validation feedback ────────────────────────────────────────────
 function validate_field(input) {

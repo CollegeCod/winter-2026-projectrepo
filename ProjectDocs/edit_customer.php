@@ -42,8 +42,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $error_msg = 'First name and last name are required.';
     } elseif ($fields['MEMB_EMAIL'] === '' || !filter_var($fields['MEMB_EMAIL'], FILTER_VALIDATE_EMAIL)) {
         $error_msg = 'Please enter a valid email address.';
-    } elseif ($fields['MEMB_PHONE'] === '') {
-        $error_msg = 'Please enter a phone number.';
+    } elseif ($fields['MEMB_PHONE'] === '' || !preg_match('/^\([0-9]{3}\) [0-9]{3}-[0-9]{4}$/', $fields['MEMB_PHONE'])) {
+        $error_msg = 'Please enter a valid phone number (e.g. (123) 456-7890).';
     } elseif ($fields['MEMB_DOB'] === '') {
         $error_msg = 'Date of birth is required.';
     } elseif ($fields['PACKAGE_ID'] === 0) {
@@ -125,9 +125,6 @@ $statuses        = $pdo->query("SELECT MEMB_STATUS_ID, MEMB_STATUS_NAME FROM mem
         </a>
         <a href="customers.php" class="nav-item active">
             <i data-lucide="users" class="nav-icon"></i><span>Customers</span>
-        </a>
-        <a href="qr_codes.php" class="nav-item">
-            <i data-lucide="qr-code" class="nav-icon"></i><span>QR Codes</span>
         </a>
         <a href="invoices_hub.php" class="nav-item">
             <i data-lucide="credit-card" class="nav-icon"></i><span>Payments, Invoices & Renewals</span>
@@ -231,10 +228,12 @@ $statuses        = $pdo->query("SELECT MEMB_STATUS_ID, MEMB_STATUS_NAME FROM mem
                             <label for="MEMB_PHONE">Phone Number</label>
                             <input type="tel" id="MEMB_PHONE" name="MEMB_PHONE"
                                 value="<?php echo field_value($customer, 'MEMB_PHONE'); ?>"
-                                placeholder="e.g. 403-555-0101 or +1 403-555-0101"
-                                maxlength="20"
+                                placeholder="(123) 456-7890"
+                                pattern="^\([0-9]{3}\) [0-9]{3}-[0-9]{4}$"
+                                title="Please enter a valid phone number in the format (123) 456-7890"
+                                maxlength="14"
                                 required>
-                            <span class="field-hint">With or without country code</span>
+                            <span class="field-hint">Format: (123) 456-7890</span>
                         </div>
 
                     </div>
@@ -357,6 +356,25 @@ $statuses        = $pdo->query("SELECT MEMB_STATUS_ID, MEMB_STATUS_NAME FROM mem
 
 <script>
 lucide.createIcons();
+
+// ── Phone number auto-formatter: (123) 456-7890 ──────────────────────────
+var phone_input = document.getElementById('MEMB_PHONE');
+if (phone_input) {
+    phone_input.addEventListener('input', function () {
+        var digits = this.value.replace(/[^\d]/g, '').slice(0, 10);
+        var formatted = '';
+        if (digits.length === 0) {
+            formatted = '';
+        } else if (digits.length <= 3) {
+            formatted = '(' + digits;
+        } else if (digits.length <= 6) {
+            formatted = '(' + digits.slice(0, 3) + ') ' + digits.slice(3);
+        } else {
+            formatted = '(' + digits.slice(0, 3) + ') ' + digits.slice(3, 6) + '-' + digits.slice(6, 10);
+        }
+        this.value = formatted;
+    });
+}
 
 // ── DOB auto-formatter ────────────────────────────────────────────
 document.getElementById('MEMB_DOB').addEventListener('blur', function () {
