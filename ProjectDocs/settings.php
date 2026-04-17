@@ -110,9 +110,9 @@ function settings_message($page_error, $page_success)
                 <span>Customers</span>
             </a>
 
-            <a href="Invoice.php" class="nav-item">
+            <a href="invoice_hub.php" class="nav-item">
                 <i data-lucide="credit-card" class="nav-icon"></i>
-                <span>Payments &amp; Invoices</span>
+                <span>Payments, Invoices & Renewals</span>
             </a>
 
             <a href="reports.php" class="nav-item">
