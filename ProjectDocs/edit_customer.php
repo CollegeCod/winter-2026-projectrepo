@@ -119,6 +119,7 @@ $statuses        = $pdo->query("SELECT MEMB_STATUS_ID, MEMB_STATUS_NAME FROM mem
             <span class="wsc-text">WSC</span>
         </div>
     </div>
+
     <nav class="sidebar-nav">
         <a href="Dashboard.php" class="nav-item">
             <i data-lucide="layout-dashboard" class="nav-icon"></i><span>Dashboard</span>
@@ -126,7 +127,7 @@ $statuses        = $pdo->query("SELECT MEMB_STATUS_ID, MEMB_STATUS_NAME FROM mem
         <a href="customers.php" class="nav-item active">
             <i data-lucide="users" class="nav-icon"></i><span>Customers</span>
         </a>
-        <a href="invoices_hub.php" class="nav-item">
+        <a href="invoice_hub.php" class="nav-item">
             <i data-lucide="credit-card" class="nav-icon"></i><span>Payments, Invoices & Renewals</span>
         </a>
         <a href="reports.php" class="nav-item">
@@ -136,9 +137,11 @@ $statuses        = $pdo->query("SELECT MEMB_STATUS_ID, MEMB_STATUS_NAME FROM mem
             <i data-lucide="settings" class="nav-icon"></i><span>Settings</span>
         </a>
     </nav>
+
     <div class="sidebar-footer">
         <button data-logout class="nav-item logout">
-            <i data-lucide="log-out" class="nav-icon"></i><span>Logout</span>
+            <i data-lucide="log-out" class="nav-icon"></i>
+            <span>Logout</span>
         </button>
     </div>
 </aside>
