@@ -266,15 +266,15 @@ $all_ids = implode(',', array_column($members, 'MEMB_ID'));
             <p class="page-subtitle">Track upcoming expirations and send renewal reminders.</p>
         </div>
         <div class="header-actions">
-            <a href="Invoice_hub.php" class="btn-back">
+            <a href="invoice_hub.php" class="btn-back">
                 <i data-lucide="arrow-left"></i> Back
             </a>
             <?php if (count($members) > 0): ?>
-                <form method="POST" action="renewals.php?filter=<?php echo urlencode($filter); ?>">
+                <form method="POST" action="renewals.php?filter=<?php echo urlencode($filter); ?>" onsubmit="return confirm('Are you sure you want to send reminders to all <?php echo count($members); ?> member(s) shown? This cannot be undone.');">
                     <input type="hidden" name="send_all" value="1">
                     <input type="hidden" name="all_ids" value="<?php echo htmlspecialchars($all_ids); ?>">
                     <button type="submit" class="btn-send-all">
-                        <i data-lucide="send"></i> Send All Reminders
+                        <i data-lucide="send"></i> Send All (<?php echo count($members); ?>)
                     </button>
                 </form>
             <?php endif; ?>
@@ -372,7 +372,7 @@ $all_ids = implode(',', array_column($members, 'MEMB_ID'));
                                     <?php endif; ?>
                                 </td>
                                 <td>
-                                    <form method="POST" action="renewals.php?filter=<?php echo urlencode($filter); ?>">
+                                    <form method="POST" action="renewals.php?filter=<?php echo urlencode($filter); ?>" onsubmit="return confirm('Send renewal reminder to <?php echo htmlspecialchars($m['MEMB_FNAME'] . ' ' . $m['MEMB_LNAME'], ENT_QUOTES); ?>?');">
                                         <input type="hidden" name="send_single" value="1">
                                         <input type="hidden" name="memb_id" value="<?php echo (int)$m['MEMB_ID']; ?>">
                                         <button type="submit" class="btn-send-single">

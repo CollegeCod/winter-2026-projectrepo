@@ -25,39 +25,42 @@ $table = "member";
 if ($search !== "") {
     $like = "%" . $search . "%";
 
-    $count_sql = "SELECT COUNT(*) FROM $table WHERE
-        MEMB_FNAME LIKE :like OR
-        MEMB_LNAME LIKE :like OR
-        MEMB_ID LIKE :like OR
-        PACKAGE_ID LIKE :like OR
-        MEMB_PHONE LIKE :like OR
-        MEMB_EMAIL LIKE :like OR
-        START_DATE LIKE :like OR
-        END_DATE LIKE :like OR
-        NOTES LIKE :like";
+    $count_sql = "SELECT COUNT(*) FROM $table m
+        LEFT JOIN packages p ON m.PACKAGE_ID = p.PACKAGE_ID
+        WHERE
+        m.MEMB_FNAME LIKE :like OR
+        m.MEMB_LNAME LIKE :like OR
+        m.MEMB_ID LIKE :like OR
+        p.PACKAGE_NAME LIKE :like OR
+        m.MEMB_PHONE LIKE :like OR
+        m.MEMB_EMAIL LIKE :like OR
+        m.START_DATE LIKE :like OR
+        m.END_DATE LIKE :like OR
+        m.NOTES LIKE :like";
 
     $data_sql = "SELECT
-        MEMB_ID,
-        PACKAGE_ID,
-        MEMB_FNAME,
-        MEMB_LNAME,
-        MEMB_PHONE,
-        MEMB_EMAIL,
-        START_DATE,
-        END_DATE,
-        NOTES
-        FROM $table
+        m.MEMB_ID,
+        p.PACKAGE_NAME,
+        m.MEMB_FNAME,
+        m.MEMB_LNAME,
+        m.MEMB_PHONE,
+        m.MEMB_EMAIL,
+        m.START_DATE,
+        m.END_DATE,
+        m.NOTES
+        FROM $table m
+        LEFT JOIN packages p ON m.PACKAGE_ID = p.PACKAGE_ID
         WHERE
-        MEMB_FNAME LIKE :like OR
-        MEMB_LNAME LIKE :like OR
-        MEMB_ID LIKE :like OR
-        PACKAGE_ID LIKE :like OR
-        MEMB_PHONE LIKE :like OR
-        MEMB_EMAIL LIKE :like OR
-        START_DATE LIKE :like OR
-        END_DATE LIKE :like OR
-        NOTES LIKE :like
-        ORDER BY MEMB_LNAME ASC, MEMB_FNAME ASC
+        m.MEMB_FNAME LIKE :like OR
+        m.MEMB_LNAME LIKE :like OR
+        m.MEMB_ID LIKE :like OR
+        p.PACKAGE_NAME LIKE :like OR
+        m.MEMB_PHONE LIKE :like OR
+        m.MEMB_EMAIL LIKE :like OR
+        m.START_DATE LIKE :like OR
+        m.END_DATE LIKE :like OR
+        m.NOTES LIKE :like
+        ORDER BY m.MEMB_LNAME ASC, m.MEMB_FNAME ASC
         LIMIT :limit OFFSET :offset";
 
     $count_stmt = $pdo->prepare($count_sql);
@@ -73,17 +76,18 @@ if ($search !== "") {
     $count_stmt = $pdo->query("SELECT COUNT(*) FROM $table");
 
     $data_stmt = $pdo->prepare("SELECT
-        MEMB_ID,
-        PACKAGE_ID,
-        MEMB_FNAME,
-        MEMB_LNAME,
-        MEMB_PHONE,
-        MEMB_EMAIL,
-        START_DATE,
-        END_DATE,
-        NOTES
-        FROM $table
-        ORDER BY MEMB_LNAME ASC, MEMB_FNAME ASC
+        m.MEMB_ID,
+        p.PACKAGE_NAME,
+        m.MEMB_FNAME,
+        m.MEMB_LNAME,
+        m.MEMB_PHONE,
+        m.MEMB_EMAIL,
+        m.START_DATE,
+        m.END_DATE,
+        m.NOTES
+        FROM $table m
+        LEFT JOIN packages p ON m.PACKAGE_ID = p.PACKAGE_ID
+        ORDER BY m.MEMB_LNAME ASC, m.MEMB_FNAME ASC
         LIMIT :limit OFFSET :offset");
 
     $data_stmt->bindValue(":limit", $rows_per_page, PDO::PARAM_INT);
@@ -124,20 +128,29 @@ $customers = $data_stmt->fetchAll(PDO::FETCH_ASSOC);
     </div>
 
     <nav class="sidebar-nav">
-        <a href="Dashboard.php" class="nav-item">
-            <i data-lucide="layout-dashboard" class="nav-icon"></i><span>Dashboard</span>
+        <a href="dashboard.php" class="nav-item">
+            <i data-lucide="layout-dashboard" class="nav-icon"></i>
+            <span>Dashboard</span>
         </a>
         <a href="customers.php" class="nav-item active">
-            <i data-lucide="users" class="nav-icon"></i><span>Customers</span>
+            <i data-lucide="users" class="nav-icon"></i>
+            <span>Customers</span>
         </a>
-        <a href="invoice_hub.php" class="nav-item">
-            <i data-lucide="credit-card" class="nav-icon"></i><span>Payments, Invoices & Renewals</span>
+        <a href="invoices.php" class="nav-item">
+            <i data-lucide="credit-card" class="nav-icon"></i>
+            <span>Payments</span>
         </a>
-        <a href="reports.php" class="nav-item">
-            <i data-lucide="bar-chart-2" class="nav-icon"></i><span>Reports</span>
+        <a href="renewal.php" class="nav-item">
+            <i data-lucide="refresh-cw" class="nav-icon"></i>
+            <span>Renewals</span>
         </a>
-        <a href="settings.php" class="nav-item">
-            <i data-lucide="settings" class="nav-icon"></i><span>Settings</span>
+        <a href="invoice.php" class="nav-item">
+            <i data-lucide="file-text" class="nav-icon"></i>
+            <span>Invoice</span>
+        </a>
+        <a href="sys_settings.php" class="nav-item">
+            <i data-lucide="settings" class="nav-icon"></i>
+            <span>Settings</span>
         </a>
     </nav>
 
@@ -242,7 +255,7 @@ $customers = $data_stmt->fetchAll(PDO::FETCH_ASSOC);
                             <td>
                                 <span class="badge badge-package">
                                     <?php echo htmlspecialchars(
-                                        $customer["PACKAGE_ID"],
+                                        $customer["PACKAGE_NAME"] ?? '—',
                                     ); ?>
                                 </span>
                             </td>

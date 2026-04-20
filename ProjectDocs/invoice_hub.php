@@ -36,20 +36,17 @@ $total_invoices = (int)$pdo->query("SELECT COUNT(*) FROM invoice")->fetchColumn(
 <body>
 
 <!-- ===== SIDEBAR ===== -->
-    <aside class="sidebar">
-        <div class="sidebar-logo">
-            <div class="logo-images">
-                <img src="images/Belle_Logo.png" alt="Belle's Training Solutions" class="logo-img">
-                <img src="images/WSC_Logo.png" alt="WSC" class="logo-wsc">
-            </div>
-            <div class="logo-fallback">
-                <div class="logo-circle">
-                    <span>Belle's<br>Training<br>Solutions</span>
-                </div>
-                <span class="wsc-text">WSC</span>
-            </div>
+<aside class="sidebar">
+    <div class="sidebar-logo">
+        <div class="logo-images">
+            <img src="images/Belle_Logo.png" alt="Belle's Training Solutions" class="logo-img">
+            <img src="images/WSC_Logo.png" alt="WSC" class="logo-wsc">
         </div>
-
+        <div class="logo-fallback">
+            <div class="logo-circle"><span>Belle's<br>Training<br>Solutions</span></div>
+            <span class="wsc-text">WSC</span>
+        </div>
+    </div>
     <nav class="sidebar-nav">
         <a href="Dashboard.php" class="nav-item">
             <i data-lucide="layout-dashboard" class="nav-icon"></i><span>Dashboard</span>
@@ -58,10 +55,10 @@ $total_invoices = (int)$pdo->query("SELECT COUNT(*) FROM invoice")->fetchColumn(
             <i data-lucide="users" class="nav-icon"></i><span>Customers</span>
         </a>
         <a href="invoice_hub.php" class="nav-item active">
-            <i data-lucide="credit-card" class="nav-icon"></i><span>Payments, Invoices & Renewals</span>
+            <i data-lucide="credit-card" class="nav-icon"></i><span>Payments</span>
         </a>
         <a href="reports.php" class="nav-item">
-            <i data-lucide="bar-chart-2" class="nav-icon"></i><span>Reports</span>
+            <i data-lucide="file-bar-chart" class="nav-icon"></i><span>Reports</span>
         </a>
         <a href="settings.php" class="nav-item">
             <i data-lucide="settings" class="nav-icon"></i><span>Settings</span>
@@ -82,13 +79,21 @@ $total_invoices = (int)$pdo->query("SELECT COUNT(*) FROM invoice")->fetchColumn(
             <h1>Payments &amp; Renewals</h1>
             <p class="page-subtitle">Manage invoices, track payments, and handle membership renewals.</p>
         </div>
-        <a href="Dashboard.php" class="btn-back">
-            <i data-lucide="arrow-left"></i> Back to Dashboard
-        </a>
+        <div class="hub-header-actions">
+            <a href="invoices.php" class="btn-quick-action">
+                <i data-lucide="plus-circle"></i> Create Invoice
+            </a>
+            <a href="renewals.php" class="btn-quick-action btn-quick-renewals">
+                <i data-lucide="send"></i> Send Reminders
+            </a>
+            <a href="Dashboard.php" class="btn-back">
+                <i data-lucide="arrow-left"></i> Back
+            </a>
+        </div>
     </div>
 
     <!-- ── Quick stats ──────────────────────────────────────────────────── -->
-    <div class="stats-row">
+    <div class="stats-row" style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:28px;">
         <div class="stat-card">
             <i data-lucide="file-text" class="stat-icon"></i>
             <div class="stat-info">
@@ -120,7 +125,7 @@ $total_invoices = (int)$pdo->query("SELECT COUNT(*) FROM invoice")->fetchColumn(
     </div>
 
     <!-- ── Navigation cards ─────────────────────────────────────────────── -->
-    <div class="hub-cards">
+    <div class="hub-cards" style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
 
         <a href="invoices.php" class="hub-card">
             <div class="hub-card-icon icon-orange">
