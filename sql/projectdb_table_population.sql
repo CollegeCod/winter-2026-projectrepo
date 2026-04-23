@@ -1,9 +1,9 @@
 SELECT * FROM projectdb.inv_status;
 INSERT INTO inv_status (INV_STAT_ID, STAT_NAME) VALUES
-(1, Pending),
-(2, Paid),
-(3, Overdue),
-(4, Canceled);
+(1, 'Pending'),
+(2, 'Paid'),
+(3, 'Overdue'),
+(4, 'Canceled');
 
 SELECT * FROM projectdb.memb_status;
 INSERT INTO memb_status (MEMB_STATUS_ID, MEMB_STATUS_NAME) VALUES
@@ -26,3 +26,7 @@ INSERT INTO packages (PACKAGE_ID, PACKAGE_NAME) VALUES
 (10, 'Ultimate — 3 Month'),
 (11, 'Ultimate — 6 Month'),
 (12, 'Ultimate — 1 Year');
+
+SELECT * FROM projectdb.permissions;
+INSERT INTO permissions (PERM_ID, PERM_NAME) VALUES
+(1, 'admin');
